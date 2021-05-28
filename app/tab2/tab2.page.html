@@ -1,0 +1,209 @@
+<ion-content >
+	<div id="search" class="search_box">
+		<img class="search_img" (click)="openModal_2()" src="../assets/imgs/Group 11997.svg">
+	</div>
+	<div id="button_select" class="button_select">
+		<ion-button shape="round" [ngClass]="{'button_color':segmentModel == 'all'}" (click)="segmentChanged('all')" class="btn_1">All</ion-button>
+		<ion-button shape="round" [ngClass]="{'button_color':segmentModel == 'photos'}" (click)="segmentChanged('photos')" class="btn_2">Photos</ion-button>
+		<ion-button shape="round" [ngClass]="{'button_color':segmentModel == 'videos'}" (click)="segmentChanged('videos')" class="btn_3">Videos</ion-button>
+		<ion-button shape="round" [ngClass]="{'button_color':segmentModel == 'posts'}" (click)="segmentChanged('posts')" class="btn_4">Posts</ion-button>
+	</div>
+	<p class="trending_title">Trending</p>
+		<div id="trending_button" class="trending_button">
+			<ion-button *ngFor="let hashtag of hashtag_tag" (click)="openModal(hashtag.hashtag)" shape="round" class="btn_trade">{{hashtag.hashtag}}</ion-button>
+		</div>
+		<div *ngIf="loader == 'present'" style="text-align: center;
+		    margin-left: 15px;">
+			 <ion-spinner style="position: relative;
+			    left: 0;
+			    right: 0;
+			    margin-left: auto;
+			    margin-right: auto; 
+			    display: block;" name="lines"></ion-spinner>
+			 <p style="text-align: center;margin-left: 15px;">Loading...</p>
+		 </div> 
+		<div id="vide_img_posts" *ngIf="segmentModel === 'all'">
+		 <div style="    text-align: center;
+			    margin-top: 11px;
+			    color: #000000;" *ngIf="data_length < 1">
+		    	No post yet	
+		    </div>
+			<div class="mainVideo">
+				<div class="indiseVideo" [class.display_css]="da.vid == '' || da.privacy == false || da.from == 'Deleted post'" *ngFor="let da of data">
+					<video  #player  [muted]="true" controls (play)="open_post(da,da.id)" style="height: 100px;border-radius: 8px;width: 170px;">
+						<source  [src]="da.vid+'#t=0.1'" type="video/mp4">
+					</video>
+				</div>
+			</div>
+		    <div class="side_img">
+		    	<div [class.display_css]="da.img == '' || da.privacy == false || da.from == 'Deleted post'" *ngFor="let da of data; let i= index;let odd = odd">
+			       <img  (click)="open_post(da,da.id)" *ngIf="odd" class="small_img" [src]="da.img">
+			    </div>   	
+		    </div>
+			<!--  <ion-grid [class.display_css]="da.img != '' && da.vid != '' || da.privacy == false || da.from == 'Deleted post'" style="width: 399px;" class="img_box" *ngFor="let da of data; let i= index">
+		         <ion-row *ngIf="i < 6" style="margin-top: -10px;">
+		          <ion-col size="8">
+		            <ion-grid  class="post_box" *ngIf="da.img == '' && da.vid == ''">
+		              <ion-row>
+		                <ion-col  size="2">
+		                	<img class="profile_image_box" ionImgViewer  [src]="da.data.profile?.profile">
+		                </ion-col>
+		                <ion-col style="margin-left: 12px;" size="6" (click)="open_post(da,da.id)">
+		                  <p class="username">{{da.data.profile.username}}</p>	
+		                  <p class="image_box_txt">{{da.msg}}</p>
+		                  <div style="margin-left: -15px;">
+					      	<p class="hash_" *ngFor="let hsh of da.hash" (click)="get_post_detail(hsh)">{{hsh}}</p>
+					      </div>
+		                  <p class="image_box_tim">{{da.createdAt.seconds * 1000 | date:'medium'}}</p>
+		                </ion-col>
+		              </ion-row>
+		            </ion-grid> 
+		          </ion-col>
+		         </ion-row>
+		        <ion-row *ngIf="i < 6">
+		       </ion-row>
+		    </ion-grid> -->
+		    <ion-grid style="    margin-top: -21px;">
+		    	<ion-row style="margin-right: 23%;">
+		    		<div [class.display_css]="da.img == '' || da.privacy == false || da.from == 'Deleted post'" *ngFor="let da of data; let i= index;let even = even">
+				    	<ion-col (click)="open_post(da,da.id)" *ngIf="even" size="6">
+				           <img class="small_img_second" [src]="da.img">
+				        </ion-col>
+			    	</div>
+		   	    </ion-row>
+		    </ion-grid> 
+		    <!-- 
+		     <ion-grid [class.display_css]="da.img != '' && da.vid != '' || da.privacy == false || da.from == 'Deleted post'" style="width: 399px;" class="img_box" *ngFor="let da of data; let i= index">
+		         <ion-row *ngIf="i > 6 && i < 13" style="margin-top: -10px;">
+		          <ion-col size="8">
+		            <ion-grid  class="post_box" *ngIf="da.img == '' && da.vid == ''">
+		              <ion-row>
+		                <ion-col  size="2">
+							<ion-avatar>
+								<ion-img class="profile_image_box" ionImgViewer  [src]="da.data.username?.profile"></ion-img>
+							</ion-avatar>
+		                </ion-col>
+		                <ion-col style="margin-left: 12px;" size="6" (click)="open_post(da,da.id)">
+		                  <p class="username">{{da.data.username?.username}}</p>
+		                  <p class="image_box_txt" [innerHTML]="da.msg"></p>
+
+		                  <div style="margin-left: -15px;">
+					      	<p class="hash_" *ngFor="let hsh of da.hash" (click)="get_post_detail(hsh)">{{hsh}}</p>
+					      </div>
+		                  <p class="image_box_tim">{{da.createdAt.seconds * 1000 | date:'medium'}}</p>
+		                </ion-col>
+		              </ion-row>
+		            </ion-grid> 
+		          </ion-col>
+		         </ion-row>
+		        <ion-row *ngIf="i > 6 && i < 13">
+		       </ion-row>
+		    </ion-grid>
+		    <ion-grid style="    margin-top: -14px;">
+		    	<ion-row style="margin-right: 30%;">
+		    		<div [class.display_css]="da.img == '' || da.privacy == false || da.from == 'Deleted post'" *ngFor="let da of data; let i= index">
+				    	<ion-col (click)="open_post(da,da.id)" *ngIf="da.img && i > 6 && i < 13" size="6">
+				           <img class="small_img_second" [src]="da.img">
+				        </ion-col>
+			    	</div>
+		   	    </ion-row>
+		    </ion-grid> -->
+		</div>
+		<div id="vide_img_photos" *ngIf="segmentModel === 'photos'"> 
+			<div style="    text-align: center;
+			    margin-top: 11px;
+			    color: #000000;" *ngIf="data_length < 1">
+		    	No post yet	
+		    </div>	
+			<div class="image_box_photos">
+				<ion-grid style="    margin-left: -5px;">  
+		    		<ion-row> 
+	    				<ion-col style="padding: 0;margin: 0;" (click)="open_post(da,da.id)" [class.display_css]="da.img == '' || da.privacy == false || da.from == 'Deleted post'" size="4" *ngFor="let da of data">
+							<img  class="small_img_photos_1" [src]="da.img">
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</div>
+			<!-- <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData_all($event)">
+			    <ion-infinite-scroll-content
+			      loadingSpinner="bubbles"
+			      loadingText="Loading more data...">
+			    </ion-infinite-scroll-content>
+			</ion-infinite-scroll>  -->
+		</div>
+		<div id="vide_img_posts" *ngIf="segmentModel === 'videos'">
+			<div style="    text-align: center;
+			    margin-top: 11px;
+			    color: #000000;" *ngIf="data_length < 1">
+		    	No post yet	
+		    </div>	
+		 <!--<div class="image_box_videos">
+			<ion-grid style="    margin-left: -5px;" >
+	    		<ion-row>
+    				<ion-col style="margin: 0;padding: 0;" [class.display_css]="!da.vid" *ngFor="let da of data" size="6">
+						<video *ngIf="da.vid" controls [muted]="true" (pointerover)="open_post(da,da.id)"    controlsList="nodownload" preload="metadata" class="image_box_videos_1">
+						  <source  [src]="da.vid+'#t=0.1'" type="video/mp4" >
+						</video>
+
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		 </div> -->
+			<!--<div class="mainVideo">
+				<div class="indiseVideo" [class.display_css]="!da.vid" *ngFor="let da of data">
+					<video    [muted]="true" controls (play)="open_post(da,da.id)" style="height: 100px;border-radius: 8px;">
+						<source  [src]="da.vid+'#t=0.1'" type="video/mp4">
+					</video>
+				</div>
+			</div> -->
+			<ion-grid>
+				<ion-row>
+					<ion-col   size="6" [class.display_css]="da.vid == '' || da.privacy == false || da.from == 'Deleted post'" *ngFor="let da of data">
+						<div class="vidoebg2" (click)="open_post(da,da.id)">
+							<video [muted]="true"  loop class="videodis2">
+								<source [src]="da.vid+'#t=0.1'" type="video/mp4">
+							</video>
+						</div>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		 <!--  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData_all($event)">
+		    <ion-infinite-scroll-content
+		      loadingSpinner="bubbles"
+		      loadingText="Loading more data...">
+		    </ion-infinite-scroll-content>
+		  </ion-infinite-scroll> -->		
+		</div>
+		<div id="vide_img_posts" *ngIf="segmentModel === 'posts'">
+			 <div style="    text-align: center;
+			    margin-top: 11px;
+			    color: #000000;" *ngIf="data_length < 1">
+		    	No post yet	
+		    </div>
+
+			<div class="image_box_photos">
+				<ion-grid [class.display_css]="da.vid != '' && da.img != '' || da.privacy == false || da.from == 'Deleted post'" *ngFor="let da of data" class="post_box_post">
+				  <ion-row>
+				    <ion-col size="2">
+			 		  <img class="profile_image_box_post" ionImgViewer  [src]="da.data.username?.profile">
+				    </ion-col>
+				    <ion-col size="10">
+				      <p class="user_name_post" (click)="get_profile(da)">{{da.data.username?.username}}</p>
+				      <p class="image_box_txt_post" [innerHTML]="da.msg" (click)="open_post(da,da.id)"></p>
+				      <div style="margin-left: 6px;">
+				      	<p class="hash" *ngFor="let hsh of da.hash" (click)="get_post_detail(hsh)">{{hsh}}</p>
+				      </div>
+				      <!-- <p class="hash_post" (click)="get_post_detail(da.hash)">{{da.hash}}</p> -->
+				      <!-- <p class="image_box_tim_post">{{da.createdAt.seconds * 1000 | date:'medium'}}</p> -->
+				    </ion-col>
+				  </ion-row>
+				</ion-grid>
+			</div>	
+			<!-- <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData_all($event)">
+			    <ion-infinite-scroll-content
+			      loadingSpinner="bubbles"
+			      loadingText="Loading more data...">
+			    </ion-infinite-scroll-content>
+			  </ion-infinite-scroll> -->
+		</div>
+</ion-content>

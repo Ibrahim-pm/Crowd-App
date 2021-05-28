@@ -1,0 +1,84 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu side="start" menuId="first" contentId="main-content" type="overlay">
+      <ion-content>
+        <div class="profile_pic"> 
+          <!-- {{userimage}} -->
+          <img [class.border_wala_circle]="userimage != 'assets/imgs/profile-user.svg'" class="img" [src]="userimage || 'assets/imgs/profile-user.svg'">
+          <p  class="name">{{val?.username || ''}}</p>
+        </div>
+        <ion-list lines="none" id="inbox-list">
+          <ion-menu-toggle auto-hide="false">
+            <ion-item [routerDirection]="'root'" routerLink="/tabs/tabs/tab6">
+              <img class="menu_icon" src="../assets/imgs/menu/user (13).svg">
+              <ion-label class="txt">Profile</ion-label>
+            </ion-item>
+            <ion-item [routerDirection]="'root'" routerLink="/wallet">
+              <img class="menu_icon" src="../assets/imgs/menu/wallet-filled-money-tool.svg">
+              <ion-label class="txt">Wallet</ion-label>
+            </ion-item>
+            <ion-item [routerDirection]="'root'" routerLink="/keep">
+              <img class="menu_icon" src="../assets/imgs/menu/hello (1).svg">
+              <ion-label class="txt">Keeps</ion-label>
+            </ion-item>
+            <ion-item [routerDirection]="'root'" routerLink="/tipjar">
+              <img class="menu_icon" src="../assets/imgs/menu/coin (1).svg">
+              <ion-label class="txt">Tip Jar</ion-label>
+            </ion-item>
+            <ion-item [routerDirection]="'root'" routerLink="/helpsuport">
+              <img class="menu_icon" src="../assets/imgs/menu/help.svg">
+              <ion-label class="txt">Help & Support</ion-label>
+            </ion-item>
+            <ion-item (click)="logout()">
+              <img class="menu_icon" src="../assets/imgs/menu/logout (2).svg">
+              <ion-label class="txt">Logout</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+      <ion-footer class="ion-no-border">
+        <ion-toolbar>
+          <!-- <img class="qr_code" src="./assets/imgs/menu_7.png">
+          <img class="light" src="./assets/imgs/menu_8.png"> -->
+        </ion-toolbar>
+      </ion-footer>
+    </ion-menu>
+    <ion-menu side="start" menuId="adminMenu" contentId="main-content" type="overlay">
+      <ion-content>
+        <div style="    width: 100%;
+          background-color: #818ddb;
+          height: 55px;
+          margin-top: -18px;
+          color: #fff;">
+          <p style="padding-top: 20px;
+          padding-left: 20px;">{{val?.username || ''}}</p>
+        </div>
+         <ion-list lines="none" id="inbox-list">
+          <ion-menu-toggle auto-hide="false">
+           <!--  <ion-item [routerDirection]="'root'" routerLink="/tabs">
+              <img class="menu_icon" src="../assets/imgs/edit_profile_menu.png">
+              <ion-label class="txt">Home</ion-label>
+            </ion-item> -->
+            <ion-item [routerDirection]="'root'" routerLink="/editprofile">
+              <img class="menu_icon" src="../assets/imgs/menu/user (12).svg">
+              <ion-label class="txt">Edit Profile</ion-label>
+            </ion-item>
+            <ion-item [routerDirection]="'root'" routerLink="/changepass">
+              <img class="menu_icon" src="../assets/imgs/menu/password.svg">
+              <ion-label class="txt">Change Password</ion-label>
+            </ion-item>
+            <ion-item [routerDirection]="'root'" routerLink="/setting">
+              <img class="menu_icon" src="../assets/imgs/menu/Group 11574.svg">
+              <ion-label class="txt">Settings</ion-label>
+            </ion-item>
+            <ion-item [routerDirection]="'root'" routerLink="/about">
+              <img class="menu_icon" src="../assets/imgs/menu/about.svg">
+              <ion-label class="txt">About</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+   </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

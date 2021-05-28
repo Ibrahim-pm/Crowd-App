@@ -1,0 +1,177 @@
+.header{
+	height: 80px;
+}
+.profile_img{
+       width: 38px;
+    margin-top: 25px;
+    margin-left: 20px;
+    border-radius: 25px;
+    height: 38px;
+    margin-bottom: 15px;
+}
+.cam_{
+	margin-right: 20px;
+    margin-top: 22px;
+    width: 38px;
+    margin-bottom: 15px
+}
+.logo{
+	width: 52px;
+    position: absolute;
+    left: 44%;
+    top: 20px;
+}
+.post_img{
+	width: 100%;
+	height: 300px;
+    /*margin-top: 10px;*/
+}
+.image_box{
+	position: relative;
+}
+.post_box{
+    position: relative;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+.video_box{
+    position: relative;
+}
+.imge_box_logo{
+	    position: absolute;
+    bottom: 30px;
+    right: 15px;
+}
+.image_box_wipe{
+	position: absolute;
+    bottom: 85px;
+    right: 18px;
+}
+.image_box_share{
+    position: absolute;
+    right: 16px;
+    bottom: 140px;	
+}
+.image_box_msg{
+	position: absolute;
+    bottom: 195px;
+    right: 18px;
+}
+.image_box_heart{
+	    position: absolute;
+    bottom: 240px;
+    right: 19px;
+}
+.hun_one{
+	    position: absolute;
+    bottom: 64px;
+    right: 29px;
+    font-size: 10px;
+    color: #fff;
+}
+.hun_two{
+	    position: absolute;
+    bottom: 114px;
+    right: 29px;
+    font-size: 10px;
+    color: #fff;
+}
+.hun_thr{
+	    position: absolute;
+    bottom: 164px;
+    right: 29px;
+    font-size: 10px;
+    color: #fff;
+}
+.hun_for{
+	    position: absolute;
+    bottom: 218px;
+    right: 29px;
+    font-size: 10px;
+    color: #fff;
+}
+.profile_image_box{
+	    width: 40px;
+    margin-left: 10px;
+    border-radius: 40px;
+    height: 40px;
+    margin-top: 14px;
+    margin-right: 25px;
+}
+.live_status{
+       background-color: #00b5aa;
+    position: absolute;
+    border-radius: 22px;
+    height: 12px;
+    width: 12px;
+    left: 40px;
+    margin-top: 12px;
+    border: solid #fff 1px;
+}
+.image_box_txt{
+    font-size: 13px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    }
+.hash{
+    margin-top: 0;
+    margin-left: 10px;
+    font-size: 13px;
+    color: #2676e1;
+    margin-bottom: 2px;
+}
+.image_box_tim{
+    font-size: 10px;
+    margin-left: 8px;
+    margin-top: 0;
+    color: #999ca0;
+}
+.img_session{
+   border-bottom: solid 1px #f6f6f6;
+}
+.post_session{
+   border-bottom: solid 1px #f6f6f6;
+}
+.video_session{
+   border-bottom: solid 1px #f6f6f6; 
+}
+.video_play{
+    width: 100%;
+    height: 300px;
+    background-color: #000;
+    /*margin-top: 15px;*/
+}
+.post_box_logo{
+    position: absolute;
+    bottom: 5px;
+    right: 15px;
+    width: 35px;
+}
+ion-tab-button {
+  --ripple-color: #c1c0c9;
+  --color: #c1c0c9;
+}
+.add_button{
+    position: relative;
+    top: -72px;
+    margin-bottom: -55px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+.notificatio{
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    font-family: initial;
+    color: white;
+    font-size: 12px;
+    padding: 6px;
+    background-color: red;
+    border-radius: 50px;
+    z-index: 999;
+    height: 24px;
+    width: 25px;
+}

@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons  slot="start">
+	 	<ion-icon (click)="goBack()" class="back_button" name="chevron-back-outline"></ion-icon>
+	</ion-buttons>
+    <ion-title class="header_txt">Tip Jar</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+	<div class="btn_box"> 
+		<ion-button [class.btn_color_sec]="tip_recived == 'false'" [class.btn_color]="tip_recived == 'true'" class="btn_1" shape="round" (click)="tip_recived_()">Tip Received</ion-button>
+		<ion-button [class.btn_color_sec]="tip_sent == 'false'" [class.btn_color]="tip_sent == 'true'" class="btn_2" shape="round" (click)="tip_sent_()">Tips Sent</ion-button>
+	</div>
+	<ion-grid *ngIf="tip_recived == 'true'">
+	  <p *ngIf="data_length < 1" style="text-align: center;margin-top: 25px;">No Tips Recieved</p>
+	  <p *ngIf="data_length > 0" style="text-align: left;
+    margin-top: 25px;
+    margin-left: 28px;
+    margin-bottom: 0;">Total {{totat_1}} credits recieved</p>
+	  <ion-row *ngFor="let da of data">
+	    <ion-col size="3">
+	 		<img class="profile_pic" [src]="da.data.username?.profile || '../assets/imgs/profile.svg'">
+	    </ion-col>
+	    <ion-col size="6">                                     
+	        <p class="post_txt"><span style="font-weight: 700;">{{da.data.username?.username}}</span> tipped {{da.credit}} credits</p>
+	        <!-- <p class="post_time">15 hours ago</p> -->
+	        <p class="image_box_tim" *ngIf="((date_current - da.createdAt.toMillis())/3600000)/24 > 1 ">{{((date_current - da.createdAt.toMillis())/3600000)/24 | number: "1.0-0"}}d ago</p>
+			      <p class="image_box_tim" *ngIf="((date_current - da.createdAt.toMillis())/60000)/60 < 60  && ((date_current - da.createdAt.toMillis())/60000)/60 > 1">{{((date_current - da.createdAt.toMillis())/60000)/60 | number: "1.0-0"}}h ago</p>
+			      <p class="image_box_tim" *ngIf="((date_current - da.createdAt.toMillis())/60000) < 60 ">{{((date_current - da.createdAt.toMillis())/60000) | number: "1.0-0"}}m ago</p>
+	    </ion-col>
+	    <ion-col size="3">
+	      <!-- <img class="post_img" src="../assets/imgs/profile.jpg"> -->
+	    </ion-col>
+	  </ion-row>
+	<!--   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData_all($event)">
+			    <ion-infinite-scroll-content
+			      loadingSpinner="bubbles"
+			      loadingText="Loading more data...">
+			    </ion-infinite-scroll-content>
+			  </ion-infinite-scroll> -->
+	</ion-grid>
+	<ion-grid *ngIf="tip_sent == 'true'">
+	  <p *ngIf="data_length_1 < 1" style="text-align: center;margin-top: 25px;">No Tips Sent</p>	
+	  <p *ngIf="data_length_1 > 0" style="text-align: left;
+    margin-top: 25px;
+    margin-left: 28px;
+    margin-bottom: 0;">Total {{totat_2}} credits sent</p>
+	  <ion-row *ngFor="let da of data_second">
+	    <ion-col size="3">
+	 		<img class="profile_pic" [src]="da.data.username?.profile || '../assets/imgs/profile.svg'">
+	    </ion-col>
+	    <ion-col size="6">										
+	        <p class="post_txt">You sent {{da.credit}} credits to<span style="font-weight: 700;"> {{da.data.username?.username}}</span></p>
+	        <!-- <p class="post_time">15 hours ago</p> -->
+	        <p class="image_box_tim" *ngIf="((date_current - da.createdAt.toMillis())/3600000)/24 > 1 ">{{((date_current - da.createdAt.toMillis())/3600000)/24 | number: "1.0-0"}}d ago</p>
+			      <p class="image_box_tim" *ngIf="((date_current - da.createdAt.toMillis())/60000)/60 < 60  && ((date_current - da.createdAt.toMillis())/60000)/60 > 1">{{((date_current - da.createdAt.toMillis())/60000)/60 | number: "1.0-0"}}h ago</p>
+			      <p class="image_box_tim" *ngIf="((date_current - da.createdAt.toMillis())/60000) < 60 ">{{((date_current - da.createdAt.toMillis())/60000) | number: "1.0-0"}}m ago</p>
+	    </ion-col>
+	    <ion-col size="3">
+	      <!-- <img class="post_img" src="../assets/imgs/profile.jpg"> -->
+	    </ion-col>
+	  </ion-row>
+	 <!--  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData_all($event)">
+			    <ion-infinite-scroll-content
+			      loadingSpinner="bubbles"
+			      loadingText="Loading more data...">
+			    </ion-infinite-scroll-content>
+			  </ion-infinite-scroll> -->
+	</ion-grid>
+</ion-content>

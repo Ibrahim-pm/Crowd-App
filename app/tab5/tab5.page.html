@@ -1,0 +1,48 @@
+<ion-content>
+	<ion-icon (click)="dismiss()" class="close_icon" name="close-outline"></ion-icon>
+	<ion-icon *ngIf="croppedImage" class="done" name="checkmark-outline" mode="ios" (click)="Done()"></ion-icon>
+	<div class="popup_box" [class.height_change]="name" *ngIf="!showtrue">
+		<img class="shade_line" src="../assets/imgs/line.png">
+		<p class="post_txt">Posts</p>
+		<img *ngIf="whats_mind || base64Image || video64" class="send" (click)="send_sms_check()" src="../assets/imgs/sendpost.png">
+		<!-- <ion-input class="input_field" [(ngModel)]="whats_mind" (input)="onSearchChange($event.target.value)" placeholder="Talk to the Crowd!"></ion-input> -->
+
+		<ion-textarea rows="5" class="input_field" [(ngModel)]="whats_mind" (input)="onSearchChange($event.target.value)" placeholder="Talk to the Crowd!"></ion-textarea>
+
+		<!-- <ion-input class="hash_field" [(ngModel)]="hash" placeholder="Hashtag"></ion-input> -->
+		<img *ngIf="base64Image" class="iamge_cam" [src]="base64Image">
+		<img *ngIf="video64" class="iamge_video" src="../assets/imgs/video_play.png">
+		<!-- <ion-searchbar (ionChange)="getItems($event)" search-icon="undefined"></ion-searchbar> -->
+		<!-- <input type="text" [mention]="items_">
+		<ion-input [mention]="items_"></ion-input> -->
+		<div id="list_box" style="    height: 245px;overflow: scroll;" *ngIf="name">
+			<ion-list>
+				<ion-item *ngFor="let da of items_search | slice:0:20; let i=index" (click)="send_notification(da)">
+					<ion-avatar slot="start">
+						<img *ngIf="!da[0]" [src]="da.profile || '../assets/imgs/profile.svg'">
+						<img *ngIf="da[0]" [src]="da[0]">
+					</ion-avatar>
+					<ion-label>
+						<h2 class="name_list">{{da[1]}}</h2>
+						<h3 class="name_deatil">@{{da[1]}}</h3>
+					</ion-label>
+				</ion-item>
+			</ion-list>
+		</div>	
+		<div class="cam_box">
+			<img class="cam_img" (click)="camera_capture()" src="../assets/imgs/Group_3.svg">
+			<img (click)="capturessVideo()" class="video_img" src="../assets/imgs/Group_2.svg">
+			<!-- <img (click)="gallery_capture()" class="gallery" src="../assets/imgs/gallery.png"> -->
+			<div class="image-upload cam_img2">
+				<label for="file-input" class="">
+					<img style="width: 30%;" src="../assets/imgs/Group_1.svg" />
+				</label>
+				<input class="fileIcon" id="file-input" type="file"  (change)="changeListener($event)" for="files" >
+			</div>
+		</div>
+	</div>
+	<!-- <image-cropper class="mgtop65px" *ngIf="showtrue" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" format="png" (imageCropped)="imageCropped($event)"></image-cropper> -->
+	<div class="mgtop65px" *ngIf="showtrue">
+		<image-cropper   [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" format="png" (imageCropped)="imageCropped($event)"></image-cropper>
+	</div>
+</ion-content>

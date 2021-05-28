@@ -1,0 +1,115 @@
+<ion-header style="background-color: #fff">
+  <ion-toolbar>
+    <ion-title class="page_title">Notifications</ion-title>
+  </ion-toolbar>
+  	<ion-segment class="segment_box" (ionChange)="segmentChanged($event)" [(ngModel)]="segmentModel">
+	  <ion-segment-button value="active">
+	    <ion-label>Activity</ion-label>
+	  </ion-segment-button>
+	  <ion-segment-button value="follow">
+	    <ion-label>Follow Requests</ion-label>
+	    <p *ngIf="friend_list_length > 0" style="    background-color: red;
+    color: #fff;
+    border-radius: 20px;
+    font-size: 9px;
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    right: -5px;
+    padding-top: 8px;">{{friend_list_length}}</p>
+	  </ion-segment-button>
+	</ion-segment>
+</ion-header>
+<ion-content>
+	<div id="segments_box" *ngIf="segmentModel === 'active'">
+		<p class="recent_txt">Recent Activities</p>
+		<div *ngIf="notification_list_length < 1">
+			<p style="margin-top: 20px;text-align: center;">No notification yet</p>
+		</div>
+		<div>
+			<span *ngFor="let noti of notification_data">
+			<ion-grid style="    border-bottom: solid 1px #00000017" >
+			  <ion-row style="padding-bottom: 14px;    margin-top: -14px;" (click)="open_post(noti.data,noti.id)">
+			    <ion-col size="3">
+			 		<ion-img class="profile_pic" [src]="noti.data.profile?.profile ||'../assets/imgs/profile.svg'"></ion-img>
+			    </ion-col>
+			    <ion-col size="6">
+			      <p class="post_txt">{{noti.notification}}</p>
+			      <!-- <p *ngIf="noti.createdAt" class="post_time">{{noti.createdAt.seconds * 1000 | date:'medium'}}</p> -->
+			      <div *ngIf="noti.createdAt">
+				      <p class="image_box_tim" *ngIf="((date_current - noti.createdAt.toMillis())/3600000)/24 > 1 ">{{((date_current - noti.createdAt.toMillis())/3600000)/24 | number: "1.0-0"}}d ago</p>
+				      <p class="image_box_tim" *ngIf="((date_current - noti.createdAt.toMillis())/60000)/60 < 60  && ((date_current - noti.createdAt.toMillis())/60000)/60 > 1">{{((date_current - noti.createdAt.toMillis())/60000)/60 | number: "1.0-0"}}h ago</p>
+				      <p class="image_box_tim" *ngIf="((date_current - noti.createdAt.toMillis())/60000) < 60 ">{{((date_current - noti.createdAt.toMillis())/60000) | number: "1.0-0"}}m ago</p>
+			  	  </div>
+			    </ion-col>
+			    <ion-col size="3">
+			      <!-- <img class="post_img" src="../assets/imgs/profile.jpg"> -->
+			    </ion-col>
+			  </ion-row>
+			</ion-grid>
+			</span>
+		</div>
+		<!-- <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData_all($event)">
+		    <ion-infinite-scroll-content
+		      loadingSpinner="bubbles"
+		      loadingText="Loading more data...">
+		    </ion-infinite-scroll-content>
+		  </ion-infinite-scroll> -->
+	</div>
+	<div id="segments_box" *ngIf="segmentModel === 'follow'">
+		<ion-grid>
+		  <ion-row>
+		    <ion-col size="3">
+		 		<img class="follow_profile_pic" src="../assets/imgs/profile.svg">
+		 		<p *ngIf="friend_list_length > 0" class="fllowcount">{{friend_list_length}}</p>
+		    </ion-col>
+		    <ion-col size="9">
+		        <p class="follow_post_txt"><span style="font-weight: 700;">Follow Requests</span></p>
+		        <p class="follow_post_time">Approve or Ignore requests</p>
+		    </ion-col>
+		  </ion-row>
+		</ion-grid>
+		<p class="see_txt" *ngIf="friend_list_length > 7" (click)="add_sell_all()"><u>See All</u></p>
+		<div *ngIf="friend_list_length < 1">
+			<p style="margin-top: 20px;text-align: center;">No follow request yet</p>
+		</div>
+		<!--<ion-grid style="    border-bottom: solid 1px #00000017" *ngFor="let da of data">
+		  <ion-row *ngIf="friend_list_length < 7" style="padding-bottom: 14px;    margin-top: -14px;">
+		    <ion-col size="3">
+		 		<ion-img class="follow_profile_pic" (click)="get_profile(da)" [src]="da.data.profile?.profile"></ion-img>
+		    </ion-col>
+		    <ion-col size="6">
+		        <p class="follow_post_txt" (click)="get_profile(da)"><span style="font-weight: 700;">{{da.data.profile?.username}}</span></p>
+		        <p class="follow_post_time">Approve or Ignore request</p>
+		    </ion-col>
+		    <ion-col  *ngIf="request_list.indexOf(da.id) < 0" size="3">
+		    	<ion-button class="btn" shape="round" (click)="fallowing(da)">Accept</ion-button>
+		    	<ion-icon (click)="remove_add(da.id)" class="close_icon" name="close-outline"></ion-icon>
+		    </ion-col>
+		    <ion-col *ngIf="fallow == da.id || request_list.indexOf(da.id) >= 0" size="3">
+		    	<ion-button class="btn_b" shape="round" (click)="followback(da)">Follow Back</ion-button>
+		    	<ion-icon (click)="remove_add(da.id)" class="close_icon" name="close-outline"></ion-icon>
+		    </ion-col>
+		  </ion-row>
+		</ion-grid> -->
+
+		<ion-list *ngFor="let da of data">
+			<ion-item-sliding *ngIf="friend_list_length < 7">
+				<ion-item>
+					<ion-avatar slot="start">
+						<ion-img  (click)="get_profile(da)" [src]="da.data.profile?.profile"></ion-img>
+					</ion-avatar>
+					<ion-label>
+						<h2 (click)="get_profile(da)">{{da.data.profile?.username}}</h2>
+						<p class="follow_post_time">Approve or Ignore request</p>
+					</ion-label>
+					<ion-button slot="end" *ngIf="request_list.indexOf(da.id) < 0" class="btn" shape="round" (click)="fallowing(da)">Accept</ion-button>
+					<ion-button *ngIf="fallow == da.id || request_list.indexOf(da.id) >= 0" slot="end" class="btn_b" shape="round" (click)="followback(da)">Follow Back</ion-button>
+				</ion-item>
+				<ion-item-options side="end">
+					<ion-item-option (click)="remove_add(da.id)" class="bgwhite"><ion-icon color="danger" name="trash-outline" class="fontsize23px"></ion-icon></ion-item-option>
+				</ion-item-options>
+			</ion-item-sliding>
+		</ion-list>
+	</div>
+</ion-content>

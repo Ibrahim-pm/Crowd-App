@@ -1,0 +1,13 @@
+<ion-content [fullscreen]="true">
+  <!--  <img class="logo" src="../assets/imgs/crowdlogo.png"> -->
+  <h2 class="login_txt">Recover Your <br> <span class="act_txt">Account</span></h2>
+  <!-- <p class="txt">Create your account</p> -->
+  <img class="user_icon" src="../assets/imgs/username.svg">
+  <ion-input [(ngModel)]="code" placeholder = "Code" class="email_txt"></ion-input>
+
+  <!--<img class="pass_icon" src="../assets/imgs/email.png">
+  <ion-input [(ngModel)]="email" placeholder = "Email/Username" class="pass_txt"></ion-input> -->
+
+  <ion-button class="btn" shape="round" (click)="CodeMatch()">Next</ion-button>
+
+</ion-content>

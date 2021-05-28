@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons  slot="start">
+	 	<ion-icon (click)="goBack()" class="back_button" name="chevron-back-outline"></ion-icon>
+	</ion-buttons>
+    <ion-title class="header_txt">Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+	<div class="box">
+		<ion-grid>
+		  <ion-row class="row">
+		    <ion-col size="8">
+		      <p class="txt">Make Profile Public</p>
+		    </ion-col>
+		    <ion-col size="4">
+		      <ion-toggle class="togle_icon" [(ngModel)]="privacy" (ionChange)="Clicked()" color="primary"></ion-toggle>
+		    </ion-col>
+		  </ion-row>
+		</ion-grid>
+	</div>
+	<!-- <div class="box">
+		<ion-grid>
+		  <ion-row class="row">
+		    <ion-col size="8">
+		      <p class="txt">Login with Touch ID</p>
+		    </ion-col>
+		    <ion-col size="4">
+		      <ion-toggle class="togle_icon" color="primary"></ion-toggle>
+		    </ion-col>
+		  </ion-row>
+		  <ion-row class="row">
+		    <ion-col size="8">
+		      <p class="txt">Login with Touch ID</p>
+		    </ion-col>
+		    <ion-col size="4">
+		      <ion-toggle class="togle_icon" color="primary"></ion-toggle>
+		    </ion-col>
+		  </ion-row>
+		</ion-grid>
+	</div> -->
+</ion-content>

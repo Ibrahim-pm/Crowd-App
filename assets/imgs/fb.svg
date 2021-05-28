@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="86" height="74" viewBox="0 0 86 74">
+  <defs>
+    <filter id="Rectangle_37" x="0" y="0" width="86" height="74" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_11975" data-name="Group 11975" transform="translate(-190 -707)">
+    <g transform="matrix(1, 0, 0, 1, 190, 707)" filter="url(#Rectangle_37)">
+      <rect id="Rectangle_37-2" data-name="Rectangle 37" width="68" height="56" rx="10" transform="translate(9 6)" fill="#fff"/>
+    </g>
+    <g id="facebook-logo" transform="translate(201.846 726.5)">
+      <path id="Path_163" data-name="Path 163" d="M39.154,4.814H36.249c-2.278,0-2.719,1.017-2.719,2.51v3.291h5.432l0,5.155H33.53V29H27.864V15.771H23.127V10.616h4.737v-3.8C27.864,2.4,30.732,0,34.921,0l4.233.006V4.814Z" transform="translate(0 0)" fill="#3a559f"/>
+    </g>
+  </g>
+</svg>

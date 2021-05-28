@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="62" height="62" viewBox="0 0 62 62">
+  <defs>
+    <filter id="Ellipse_38" x="0" y="0" width="62" height="62" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_11976" data-name="Group 11976" transform="translate(-55 -292.001)">
+    <g transform="matrix(1, 0, 0, 1, 55, 292)" filter="url(#Ellipse_38)">
+      <circle id="Ellipse_38-2" data-name="Ellipse 38" cx="22" cy="22" r="22" transform="translate(9 6)" fill="#fff"/>
+    </g>
+    <g id="user_10_" data-name="user (10)" transform="translate(46 309.761)">
+      <g id="Group_186" data-name="Group 186" transform="translate(34.6)">
+        <g id="Group_185" data-name="Group 185">
+          <path id="Path_151" data-name="Path 151" d="M126.4,0a5.4,5.4,0,1,0,5.4,5.4A5.406,5.406,0,0,0,126.4,0Zm0,9.6a4.2,4.2,0,1,1,4.2-4.2A4.2,4.2,0,0,1,126.4,9.6Z" transform="translate(-121)" fill="#818ddb"/>
+        </g>
+      </g>
+      <g id="Group_188" data-name="Group 188" transform="translate(31 12.04)">
+        <g id="Group_187" data-name="Group 187">
+          <path id="Path_152" data-name="Path 152" d="M41.673,301H38.327A8.673,8.673,0,0,0,31,305.018v4.422H49v-4.422A8.675,8.675,0,0,0,41.673,301Zm6.127,7.24H32.2v-2.854a7.468,7.468,0,0,1,6.127-3.185h3.347a7.468,7.468,0,0,1,6.127,3.185Z" transform="translate(-31 -301)" fill="#818ddb"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

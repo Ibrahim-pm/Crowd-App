@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons  slot="start">
+	 	<ion-icon (click)="goBack()" class="back_button" name="chevron-back-outline"></ion-icon>
+	</ion-buttons>
+    <ion-title class="header_txt">{{data}}</ion-title>
+    <!-- <ion-title *ngIf="tip_sent == 'true'" class="header_txt">Following</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+	<p *ngIf="data == 'Following' && friend_data_length > 0" style="text-align: left;
+    margin-left: 35px;
+    margin-bottom: -15px;color: #9F9F9F"><span style="color: #9F9F9F">You</span> are following {{friend_data_length}} People </p>
+
+    <p *ngIf="data == 'Followers' && friend_data_length > 0" style="text-align: left;
+    margin-left: 35px;
+    margin-bottom: -15px;color: #9F9F9F">{{friend_data_length}} People are following <span style="color: #9F9F9F">You</span></p>
+	<!-- <div class="btn_box"> 
+		<ion-button [class.btn_color_sec]="tip_recived == 'false'" [class.btn_color]="tip_recived == 'true'" class="btn_1" shape="round" (click)="tip_recived_()">Followers</ion-button>
+		<ion-button [class.btn_color_sec]="tip_sent == 'false'" [class.btn_color]="tip_sent == 'true'" class="btn_2" shape="round" (click)="tip_sent_()">Following</ion-button>
+	</div> -->
+	<ion-grid *ngIf="tip_recived == 'true'">
+	  <p *ngIf="friend_data_length < 1" style="text-align: center;margin-top: 25px;">No Followers</p>	
+	  <ion-row style="margin-bottom: -21px;" *ngFor="let da of friend_data">
+	    <ion-col size="3">
+			<ion-avatar>
+				<ion-img class="profile_pic" ionImgViewer [src]="da.data.username?.profile"></ion-img>
+			</ion-avatar>
+	    </ion-col>
+	    <ion-col (click)="get_profile(da)" size="6">
+	        <p class="post_txt"><span style="font-weight: 700;">{{da.data.username?.username}}</span></p>
+	        <!--<p style="font-size: 11px;
+    margin-left: -16px;
+    margin-top: -2px;
+    color: #98a2e2;">{{da.data.username?.username}}</p> -->
+	        <!-- <p class="post_txt_"><span style="font-weight: 700;">{{da.username}}</span> is your friend</p> -->
+	    </ion-col>
+	    <ion-col size="3">
+	      <!-- <img class="post_img" src="../assets/imgs/profile.jpg"> -->
+	      <ion-icon style="position: absolute;
+    right: 10px;
+    bottom: 32px;" (click)="presentAlertConfirm(da)" name="ellipsis-vertical"></ion-icon>
+	    </ion-col>
+	  </ion-row>
+	</ion-grid>
+	<ion-grid *ngIf="tip_sent == 'true'">
+	  <p *ngIf="friend_data_length < 1" style="text-align: center;margin-top: 25px;">No Following</p>	
+	  <ion-row style="margin-bottom: -21px;" *ngFor="let da of friend_data">
+	    <ion-col size="3">
+	 		<img class="profile_pic" ionImgViewer src="../assets/imgs/profile.svg">
+	    </ion-col>
+	    <ion-col (click)="get_profile(da)" size="6">
+	        <p class="post_txt"><span style="font-weight: 700;">{{da.username}}</span></p>
+	        <p style="font-size: 11px;
+    margin-left: -16px;
+    margin-top: -2px;
+    color: #98a2e2;">@{{da.username}}</p>
+	        <!-- <p class="post_txt_"><span style="font-weight: 700;">{{da.username}}</span> is your friend</p> -->
+	    </ion-col>
+	    <ion-col size="3">
+	      <!-- <img class="post_img" src="../assets/imgs/profile.jpg"> -->
+	      <ion-icon style="position: absolute;
+    right: 10px;
+    bottom: 32px;" (click)="presentAlertConfirm(da)" name="ellipsis-vertical"></ion-icon>
+	    </ion-col>
+	  </ion-row>
+	</ion-grid>
+</ion-content>

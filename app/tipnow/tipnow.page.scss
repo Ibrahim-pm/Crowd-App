@@ -1,0 +1,76 @@
+ion-content{
+    --background: #0000005c;
+}
+.close_icon{
+	    position: absolute;
+    font-size: 29px;
+    color: #fff;
+    right: 17px;
+    top: 25px;
+}
+.box{
+	/*height: 75%;*/
+    width: 100%;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    border-radius: 55px 55px 0px 0px;
+}
+.box_second{
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+}
+.line{
+	position: relative;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 2px;
+}
+.txt{
+	margin-left: 30px;
+    font-size: 14px;
+    color: #737373;
+    margin-top: 35px;
+    /*margin-bottom: -25px;*/
+}
+.rate{
+	    color: #000;
+	font-size: 19px;
+    font-weight: 700;
+    margin-right: 9px;
+}
+.tip_btn{
+	    position: relative;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    /*margin-top: 45px;*/
+}
+.image_tip{
+      width: 50px;
+    margin-left: 18px;
+    height: 50px;
+}
+.dollar{
+    font-weight: 600;
+    padding-right: 15px
+}
+.tip_txt{
+    margin-left: 40px;
+    font-weight: 700;
+    font-size: 19px;
+}
+.box_heigh_1{
+    height: 24%;
+}
+.box_heigh_2{
+    height: 60%;
+}

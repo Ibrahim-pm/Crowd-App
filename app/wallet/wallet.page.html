@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons  slot="start">
+	 	<ion-icon (click)="goBack()" class="back_button" name="chevron-back-outline"></ion-icon>
+	</ion-buttons>
+    <ion-title class="header_txt">Wallet</ion-title>
+    <ion-buttons  slot="end">
+	 	<p (click)="sendmoney()" style="font-size: 12px;
+    margin-right: 10px;
+    color: #818ddb;
+    font-weight: 500;">Recharge Balance</p>
+	</ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+	<div class="box">
+		<div class="profile_box">
+			<p class="txt">Your Balance</p>
+			<p class="amount">$ {{amount || '0'}}</p>
+			<p class="txt_">Your Credits</p>
+			<p class="amount_">{{amount_credit || '0'}} credits</p>
+			<!-- <img class="profile_img" [src]="userimage || '../assets/imgs/profile.svg'"> -->
+			<img (click)="Pruchase()" class="pruchase" src="../assets/imgs/Group 11898.svg">
+			<img (click)="GetCridits()" class="withdraw" src="../assets/imgs/Group 11899.svg">
+		</div>
+		<h3 class="txt_history">Transactional History</h3>
+	</div>
+	<!-- <ion-button (click)="Tip()">Tip Know</ion-button> -->
+	<div>
+		<ion-grid class="grid_box">
+		  <ion-row *ngFor="let history of history_data">
+		    <ion-col size="3">
+		    	<img class="img_send" src="../assets/imgs/send_wallet.png">
+		    </ion-col>
+		    <ion-col class="col_box">
+		    	You purchased {{history.amount}} credits.
+		    </ion-col>
+		  </ion-row>
+		</ion-grid>
+	</div>
+</ion-content>

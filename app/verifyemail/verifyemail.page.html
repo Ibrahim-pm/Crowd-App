@@ -1,0 +1,6 @@
+<ion-content [fullscreen]="true">
+  <h2 class="login_txt">Verify Your <br> <span class="act_txt">Account</span></h2>
+  <img class="user_icon" src="../assets/imgs/username.svg">
+  <ion-input [(ngModel)]="code" placeholder = "Code" class="email_txt"></ion-input>
+  <ion-button class="btn" shape="round" (click)="CodeMatch()">Next</ion-button>
+</ion-content>

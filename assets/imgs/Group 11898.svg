@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="172" height="54" viewBox="0 0 172 54">
+  <defs>
+    <filter id="Rectangle_1769" x="0" y="0" width="172" height="54" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.4"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_11898" data-name="Group 11898" transform="translate(-15 -247)">
+    <g transform="matrix(1, 0, 0, 1, 15, 247)" filter="url(#Rectangle_1769)">
+      <rect id="Rectangle_1769-2" data-name="Rectangle 1769" width="154" height="36" rx="18" transform="translate(9 6)" fill="rgba(0,0,0,0.2)"/>
+    </g>
+    <text id="Purchase_Credits" data-name="Purchase Credits" transform="translate(140 275)" fill="#fff" font-size="14" font-family="Roboto-Regular, Roboto"><tspan x="-106.135" y="0">Purchase Credits</tspan></text>
+    <path id="left-arrow" d="M4.929.16a.536.536,0,0,1,.761.754L1.83,4.775H14.571a.536.536,0,0,1,.541.533.543.543,0,0,1-.541.541H1.83L5.691,9.7a.547.547,0,0,1,0,.761.533.533,0,0,1-.761,0L.154,5.689a.537.537,0,0,1,0-.754Z" transform="translate(168.693 270.435) rotate(141)" fill="#fff"/>
+  </g>
+</svg>

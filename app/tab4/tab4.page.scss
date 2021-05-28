@@ -1,0 +1,124 @@
+ion-content{
+
+    --ion-background-color:#ffffff;
+}
+.page_title{
+	color: #818ddb;
+    text-align: right;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-size: 22px;		
+}
+.segment_box{
+	margin-top: 20px;
+    background-color: #ffffff !important;
+}
+.segment-button-checked{
+	color: #000000;
+    font-size: 12px;
+    font-weight: 700;
+    --color-checked:#000 !important;
+}
+.segment-button-has-label-only{
+	font-size: 11px !important;
+}
+.recent_txt{
+    margin-left: 18px;
+    margin-top: 25px;
+    color: #a8a8a8;
+    font-size: 14px;
+}
+.profile_pic{
+        width: 52px;
+    margin-top: 20px;
+    margin-left: 10px;
+    border-radius: 40px !important;
+    overflow: hidden;
+    height: 52px;
+}
+.post_txt{
+    font-size: 14px;
+    margin-bottom: 3px;
+    margin-top: 30px;
+}
+.post_time{
+        margin-top: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    color: #a8a8a8;
+}
+.post_img{
+    margin-top: 22px;
+    width: 65px;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+.follow_profile_pic{
+        width: 52px;
+    margin-top: 20px;
+    margin-left: 10px;
+    border-radius: 40px !important;
+    overflow: hidden;
+    height: 52px;
+}
+.follow_post_txt{
+    font-size: 14px;
+    margin-bottom: 3px;
+    margin-top: 30px;
+}
+.follow_post_time{
+        margin-top: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    color: #a8a8a8;
+}
+.see_txt{
+        margin-left: 20px;
+    font-size: 15px;
+    color: #a2a2a2;
+    margin-top: 0px;
+}
+.btn{
+    width: 77px;
+    font-size: 10px;
+    height: 30px;
+    margin-top: 25px;
+    margin-left: -15px;
+}
+.btn_b{
+    width: 118px;
+    font-size: 10px;
+    height: 30px;
+    margin-top: 12px;
+    margin-left: -57px;
+}
+.close_icon{
+    position: absolute;
+    right: 0px;
+    top: 33px;
+    font-size: 25px;
+}
+
+.image_box_tim{
+    font-size: 10px;
+    margin-top: 0;
+    color: #999ca0;
+}
+.fllowcount{
+    position: absolute;
+    top: 10px;
+    left: 55px;
+    background-color: red;
+    color: #fff;
+    padding: 5px 5px 5px 9px;
+    border-radius: 12px;
+    height: 25px;
+    width: 25px;
+    font-size: 13px;
+}
+.bgwhite{
+    --background: white;
+}
+.fontsize23px{
+    font-size: 23px !important;
+}

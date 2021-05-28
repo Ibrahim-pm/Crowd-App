@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons  slot="start">
+	 	<ion-icon (click)="goBack()" class="back_button" name="chevron-back-outline"></ion-icon>
+	</ion-buttons>
+    <ion-title class="header_txt">Change Password</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<form [formGroup]="ionicForm" >
+	<ion-input class="input_1" type="password" placeholder="Current Password" [(ngModel)]="oldpassword" formControlName="oldpassword"></ion-input>
+		<p class="error ion-padding" *ngIf="isSubmitted && errorControl.oldpassword.errors?.required">
+			Password is required.
+		</p>
+		<p class="error ion-padding" *ngIf="isSubmitted && errorControl.oldpassword.errors?.pattern">
+			Minimum 6 characters, at least one uppercase letter, and one number:
+		</p>
+	<ion-input class="input_2" type="password" placeholder="New Password" [(ngModel)]="newpassword" formControlName="newpassword"></ion-input>
+		<p class="error ion-padding" *ngIf="isSubmitted && errorControl.newpassword.errors?.required">
+			Password is required.
+		</p>
+		<p class="error ion-padding" *ngIf="isSubmitted && errorControl.newpassword.errors?.pattern">
+			Minimum 6 characters, at least one uppercase letter, and one number:
+		</p>
+	<ion-input class="input_2" type="password" placeholder="Confirm Password" [(ngModel)]="confirmpassword" formControlName="confirmpassword"></ion-input>
+		<p class="error ion-padding" *ngIf="isSubmitted && errorControl.confirmpassword.errors?.required">
+			Password is required.
+		</p>
+		<p class="error ion-padding" *ngIf="isSubmitted && errorControl.confirmpassword.errors?.pattern">
+			Minimum 6 characters, at least one uppercase letter, and one number:
+		</p>
+	</form>
+    <ion-button class="btn" (click)="ChangePassword()" routerDirection="forward" shape="round">Save Changes</ion-button>
+
+</ion-content>

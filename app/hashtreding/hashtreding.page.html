@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons  slot="start">
+	 	<ion-icon (click)="goBack()" class="back_button" name="chevron-back-outline"></ion-icon>
+	</ion-buttons>
+    <ion-title class="header_txt">Trending</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<p class="trending_title">Trending</p>
+		<div id="vide_img_posts">
+
+			<ion-button shape="round" (click)="segmentChanged('true')" class="btn_2">Media</ion-button>
+			<ion-button shape="round" (click)="segmentChanged('false')" class="btn_2">Posts</ion-button>
+
+			<div *ngIf="button_media == 'true'">
+			  <div style="display: inline-block;" *ngFor="let da of data">
+			  	<div style="display: inline-block;" *ngFor="let hsh of da.hash">
+				  	<div style="width: 145px;"  *ngIf="hsh == hash && da.vid">
+						<!-- <img *ngIf="da.vid" class="video_li" (click)="open_post(da,da.id)" src="../assets/imgs/video_serach.png"> -->
+					  <div *ngIf="da.vid" style="background-color: #000;margin-left: 3px;" (click)="open_post(da,da.id)">
+					      <video [muted]="true" autoplay loop style="height: 116px;width: 142px;">
+							<source [src]="da.vid+'#t=0.1'" type="video/mp4">
+						  </video>
+					  </div>
+					</div>
+					<div style="position: relative;top: 4px;" *ngIf="hsh == hash && da.img != ''">
+					    <img class="small_img" [src]="da.img">
+					</div>
+				</div>
+		      </div>
+ 			</div>
+ 			<div *ngIf="button_media == 'false'">
+		      <div *ngFor="let da of data">
+			  	<div *ngFor="let hsh of da.hash">
+		      		<div *ngIf="hsh == hash && da.img == '' && da.vid == ''">
+						<ion-grid style="    width: 90%;" class="post_box">
+			              <ion-row *ngIf="da.img == '' && da.vid == '' && da.hash.indexOf(hash) >= 0">
+			                <ion-col size="2">
+			                	<img class="profile_image_box" [src]="da.data.profile?.profile || '../assets/imgs/profile.svg'">
+			                </ion-col>
+			                <ion-col size="10" style="padding-top: 14px">
+			                  <p class="image_box_txt" [innerHTML]="da.msg"></p>
+			                  <p class="hash">{{da.hash}}</p>
+			                  <p class="image_box_tim">{{da.createdAt.seconds * 1000 | date:'medium'}}</p>
+			                </ion-col>
+			              </ion-row>
+			            </ion-grid>
+		       	 	</div>
+		       	 </div>
+		       	</div>
+		     </div>
+		</div>
+</ion-content>
+

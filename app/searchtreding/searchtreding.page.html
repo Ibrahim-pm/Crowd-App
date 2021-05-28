@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons  slot="start">
+	 	<ion-icon (click)="goBack()" class="back_button" name="chevron-back-outline"></ion-icon>
+	</ion-buttons>
+    <ion-title class="header_txt">Search</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+	<div id="search_box">
+		<ion-searchbar (ionChange)="getItems($event)" search-icon="undefined"></ion-searchbar>
+		<img class="search_img" src="../assets/imgs/search_tab.png">
+	</div>
+	<div id="button_select" class="button_select">
+		<ion-button shape="round" [ngClass]="{'button_color':segmentModel == 'Profile'}" (click)="segmentChanged('Profile')" class="btn_1">Profile</ion-button>
+		<ion-button shape="round" [ngClass]="{'button_color':segmentModel == 'trends'}" (click)="segmentChanged('trends')" class="btn_2">Trends</ion-button>
+		<ion-button shape="round" [ngClass]="{'button_color':segmentModel == 'posts'}" (click)="segmentChanged('posts')" class="btn_4">Posts</ion-button>
+	</div>
+	<div *ngIf="segmentModel == 'Profile'">
+		<div id="list_box">
+			<ion-list>
+				<ion-list-header>
+					Recent Searchlist
+				</ion-list-header>
+
+				<ion-item [class.display_css]="da[2] == userinfo.success.email"  *ngFor="let da of items | slice:0:20; let i=index" >
+					<ion-avatar slot="start">
+						<img *ngIf="!da[0]" ionImgViewer [src]="da.profile || '../assets/imgs/profile.svg'">
+						<img *ngIf="da[0]" ionImgViewer [src]="da[0]">
+					</ion-avatar>
+					<ion-label (click)="openModal_2(da)">
+						<h2 class="name_list">{{da[1]}}</h2>
+						<h3 class="name_deatil">@{{da[1]}}</h3>
+					</ion-label>
+					<ion-label slot="end" class="ion-text-end">
+					<ion-button class="btrequest" *ngIf="friend_list_array.indexOf(da[2]) < 0 && requested_data.indexOf(user_email+da[2]) < 0" (click)="send_request(da[2],da[1])" color="primary">Follow</ion-button>
+
+					<ion-button class="btrequest"  color="primary" *ngIf="requested_data.indexOf(user_email+da[2]) >= 0 && friend_list_array.indexOf(da[2]) < 0">Request Sent</ion-button>
+					<ion-button class="btrequest" *ngIf="friend_list_array.indexOf(da[2]) >= 0" color="primary">Following</ion-button>
+					</ion-label>
+				</ion-item>
+			</ion-list>
+		</div>
+	</div>
+	<div *ngIf="segmentModel == 'trends'">
+		<div id="list_box">
+			<ion-list>
+				<ion-list-header>
+					Recent Searchlist
+				</ion-list-header>
+
+				<ion-item *ngFor="let da of hastagdata">
+					<!--<ion-avatar slot="start">
+						<img *ngIf="!da[0]" [src]="da.profile || '../assets/imgs/profile.svg'">
+						<img *ngIf="da[0]" [src]="da[0]">
+					</ion-avatar> -->
+					<ion-label>
+						<h2 class="name_list" (click)="openModal(da.hashtag)">{{da.hashtag}}</h2>
+					</ion-label>
+				</ion-item>
+			</ion-list>
+		</div>
+	</div>
+	<div *ngIf="segmentModel == 'posts'">
+		<div class="image_box_photos">
+			<span [class.display_css]="da.vid != '' && da.img != '' || da.privacy == false || da.from == 'Deleted post'" *ngFor="let da of postfilter">
+				<ion-grid *ngIf="da.msg" class="post_box_post">
+				<ion-row>
+					<ion-col (click)="open_post(da,da.id)" size="2">
+						<ion-avatar>
+							<ion-img class="profile_image_box_post" [src]="da.data.username?.profile || '../assets/imgs/profile.svg'"></ion-img>
+						</ion-avatar>
+					</ion-col>
+					<ion-col size="10">
+						<p class="user_name_post" (click)="get_profile(da)">{{da.data.username?.username}}</p>
+						<p class="image_box_txt_post" (click)="open_post(da,da.id)" [innerHTML]="da.msg"></p>
+						<p class="hash_post" (click)="get_post_detail(da.hash)">{{da.hash}}</p>
+						<p class="image_box_tim_post">{{da.createdAt || '1s'}}</p>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+			</span>
+		</div>
+	</div>
+
+</ion-content>

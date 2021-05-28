@@ -1,0 +1,222 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons  slot="start">
+			<ion-icon (click)="goBack()" class="back_button" name="chevron-back-outline"></ion-icon>
+		</ion-buttons>
+		<ion-title class="header_txt">Post</ion-title>
+	</ion-toolbar>
+</ion-header>
+<ion-content>
+	<div *ngIf="data_get">
+		<div *ngIf="data_get.img" id="image_box" class="img_session">
+			<div class="image_box">
+				<img *ngIf="data_fav_list.indexOf(data_get.post_id) < 0" class="image_box_heart" (click)="heart_fav('true',data_get)" src="../assets/imgs/img/heart.svg">
+				<div *ngFor="let my of data_fav; let i= index">
+					<img *ngIf="data_get.post_id == my.post_id && my.data == 'true'" class="image_box_heart" (click)="heart_fav_update('false',my,data_get)" src="../assets/imgs/img/heart_.svg">
+					<img *ngIf="data_get.post_id == my.post_id && my.data == 'false'" class="image_box_heart" (click)="heart_fav_update('true',my,data_get)" src="../assets/imgs/img/heart.svg">
+				</div>
+				<img *ngIf="feed_data_list.indexOf(data_get.post_id) < 0 || keep_remove == 'remove'" class="image_box_wipe" (click)="addkeep(data_get,'true')" src="../assets/imgs/img/keep.svg">
+				<div *ngFor="let kp of feed_data">
+					<img *ngIf="data_get.post_id == kp.data.post_id" class="image_box_wipe" (click)="addkeep(data_get,'false')" src="../assets/imgs/img/keep_.svg">
+					<!-- <img *ngIf="da.post_id != kp.data.post_id" class="post_wipe" (click)="addkeep(da,'false')" src="../assets/imgs/hello.png"> -->
+				</div>
+				<!-- <img class="post_img" ionImgViewer [src]="data_get.img"> -->
+				<img *ngIf="data_get.img && !data_get.secure" ionImgViewer class="post_img heightimg" [src]="data_get.img">
+				<img *ngIf="data_get.img && data_get.secure"  class="post_img heightimg" [src]="data_get.img" (click)="ShowImage(data_get.secure)">
+				<img class="imge_box_logo" (click)="Tipopen(data_get)" src="../assets/imgs/feed/tip.svg">
+				<p class="hun_one">{{data_get.fav_count}}</p>
+				<p class="hun_two">{{data_get.com_count}}</p>
+				<img class="image_box_share" (click)="create_link(data_get)" src="../assets/imgs/img/share.svg">
+				<p class="hun_thr">{{data_get.shar_count}}</p>
+				<img class="image_box_msg"  src="../assets/imgs/img/comment.svg">
+				<p class="hun_for">{{data_get.keep_count}}</p>
+			</div>
+			<div>
+				<ion-grid>
+					<ion-row>
+						<ion-col size="2">
+							<!-- <div class="live_status"></div> -->
+							<ion-img class="profile_image_box" ionImgViewer [src]="data_get.data.username?.profile"></ion-img>
+						</ion-col>
+						<ion-col size="10">
+							<p class="username" (click)="get_profile(data_get)">{{data_get.data.username?.username}}</p>
+							<p class="image_box_txt" [innerHTML]="data_get.msg"></p>
+							<!-- <p class="hash">{{data_get.hash}}</p> -->
+							<div>
+								<p class="hash" *ngFor="let hsh of data_get.hash" (click)="get_post_detail(hsh)">{{hsh}}</p>
+							</div>
+							<p class="image_box_tim">{{data_get.createdAt || '1s'}}</p>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</div>
+		</div>
+
+		<div *ngIf="data_get.img == '' && data_get.vid == ''" id="simple_post" class="post_session">
+			<div>
+				<ion-grid>
+					<ion-row>
+						<ion-col size="2">
+							<!-- <div class="live_status"></div> -->
+							
+							<ion-img class="profile_image_box" ionImgViewer [src]="data_get.data.username?.profile"></ion-img>
+						</ion-col>
+						<ion-col size="10">
+							<p class="username" (click)="get_profile(data_get)">{{data_get.data.username?.username}}</p>
+							<p class="image_box_txt" [innerHTML]="data_get.msg"></p>
+							<!-- <p class="hash">{{data_get.hash}}</p> -->
+							<div>
+								<p class="hash" *ngFor="let hsh of data_get.hash" (click)="get_post_detail(hsh)">{{hsh}}</p>
+							</div>
+							<p class="image_box_tim">{{data_get.createdAt || '1s'}}</p>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</div>
+			<div class="post_box">
+				<img *ngIf="data_fav_list.indexOf(data_get.post_id) < 0" class="post_heart" (click)="heart_fav('true',data_get)" src="../assets/imgs/feed/heart_post.svg">
+				<div *ngFor="let my of data_fav; let i= index">
+					<img *ngIf="data_get.post_id == my.post_id && my.data == 'true'" class="post_heart" (click)="heart_fav_update('false',my,data_get)" src="../assets/imgs/feed/heart_post_.svg">
+					<img *ngIf="data_get.post_id == my.post_id && my.data == 'false'" class="post_heart" (click)="heart_fav_update('true',my,data_get)" src="../assets/imgs/feed/heart_post.svg">
+				</div>
+				<p class="post_1">{{data_get.fav_count}}</p>
+				<!-- <img *ngIf="" class="post_heart" (click)="heart_fav('true',da)" src="../assets/imgs/love.png"> -->
+				<img class="post_com"  src="../../assets/imgs/feed/comment_post.svg">
+				<p class="post_2">{{data_get.com_count}}</p>
+				<img *ngIf="feed_data_list.indexOf(data_get.post_id) < 0 || keep_remove == 'remove'" class="post_wipe" (click)="addkeep(data_get,'true')" src="../assets/imgs/feed/keep_post.svg">
+				<div *ngFor="let kp of feed_data">
+					<img *ngIf="data_get.post_id == kp.data.post_id" class="post_wipe" (click)="addkeep(data_get,'false')" src="../assets/imgs/feed/keep_post_.svg">
+					<!-- <img *ngIf="da.post_id != kp.data.post_id" class="post_wipe" (click)="addkeep(da,'false')" src="../assets/imgs/hello.png"> -->
+				</div>
+				<p class="post_3">{{data_get.keep_count}}</p>
+				<img class="post_share" (click)="create_link(data_get)"  src="../assets/imgs/feed/share_post.svg">
+				<p class="post_4">{{data_get.shar_count}}</p>
+				<img class="post_box_logo" (click)="Tipopen(data_get)" src="../assets/imgs/feed/tip.svg">
+			</div>
+		</div>
+		<div *ngIf="data_get.vid" id="video_box" class="video_session">
+			<div class="image_box">
+				<video class="video_play"  #player muted poster="../assets/imgs/video_place.png" controlsList="nodownload" preload="metadata">
+					<source  [src]="data_get.vid+'#t=0.1'" type="video/mp4">
+				</video>
+			
+				 <div class="bar">
+					<ion-button size="small" (click)="playOrPause(player)" color="light" fill="clear">
+						<ion-icon slot="icon-only" [name]="Playing ? 'pause' : 'play'"></ion-icon>
+					</ion-button>
+					<ion-button (click)="Mutebutton(player)" color="light" fill="clear">
+						<ion-icon [name]="SpeakerVideo ? 'mic-off': 'mic'"  slot="icon-only"></ion-icon>
+					</ion-button>
+				</div>
+
+
+				<img class="imge_box_logo_" (click)="Tipopen(data_get)" src="../assets/imgs/feed/tip.svg">
+				<p class="hun_one">{{data_get.fav_count}}</p>
+				<img *ngIf="feed_data_list.indexOf(data_get.post_id) < 0 || keep_remove == 'remove'" class="image_box_wipe" (click)="addkeep(data_get,'true')" src="../assets/imgs/img/keep.svg">
+				<div *ngFor="let kp of feed_data">
+					<img *ngIf="data_get.post_id == kp.data.post_id" class="image_box_wipe" (click)="addkeep(data_get,'false')" src="../assets/imgs/img/keep_.svg">
+					<!-- <img *ngIf="da.post_id != kp.data.post_id" class="post_wipe" (click)="addkeep(da,'false')" src="../assets/imgs/hello.png"> -->
+				</div>
+				<p class="hun_two">{{data_get.com_count}}</p>
+				<img class="image_box_share" (click)="create_link(data_get)" src="../assets/imgs/img/share.svg">
+				<p class="hun_thr">{{data_get.shar_count}}</p>
+				<img class="image_box_msg"  src="../assets/imgs/img/comment.svg">
+				<p class="hun_for">{{data_get.keep_count}}</p>
+				<img *ngIf="data_fav_list.indexOf(data_get.post_id) < 0" class="image_box_heart" (click)="heart_fav('true',data_get)" src="../assets/imgs/img/heart.svg">
+				<div *ngFor="let my of data_fav; let i= index">
+					<img *ngIf="data_get.post_id == my.post_id && my.data == 'true'" class="image_box_heart" (click)="heart_fav_update('false',my,data_get)" src="../assets/imgs/img/heart_.svg">
+					<img *ngIf="data_get.post_id == my.post_id && my.data == 'false'" class="image_box_heart" (click)="heart_fav_update('true',my,data_get)" src="../assets/imgs/img/heart.svg">
+				</div>
+			</div>
+			<div>
+				<ion-grid style="margin-top: -52px">
+					<ion-row>
+						<ion-col size="2">
+							<!-- <div class="live_status"></div> -->
+							<ion-img class="profile_image_box" ionImgViewer [src]="data_get.data.username?.profile"></ion-img>
+						</ion-col>
+						<ion-col size="10">
+							<p class="username" (click)="get_profile(data_get)">{{data_get.data.username.username}}</p>
+							<p class="image_box_txt" [innerHTML]="data_get.msg"></p>
+							<!-- <p class="hash">{{data_get.hash}}</p> -->
+							<div>
+								<p class="hash" *ngFor="let hsh of data_get.hash" (click)="get_post_detail(hsh)">{{hsh}}</p>
+							</div>
+							<p class="image_box_tim">{{data_get.createdAt || '1s'}}</p>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</div>
+		</div>
+	</div>
+	<div>
+		<!--<ion-grid>
+			<ion-row *ngFor="let com of commentdata">
+				<ion-col size="3">
+					<ion-img class="follow_profile_pic" ionImgViewer [src]="com.data.profile?.profile"></ion-img>
+				</ion-col>
+				<ion-col size="6">
+					<p class="follow_post_txt"><span style="font-weight: 700;">{{com.data.profile.username}}</span></p>
+					<p class="follow_post_time" [innerHTML]="com.comment"></p>
+					<p class="image_box_tim"><span class="bullet">.</span>{{com.createdAt || '0s'}}</p>
+				</ion-col>
+			</ion-row>
+		</ion-grid> -->
+	</div>
+
+
+	<div *ngFor="let com of commentdata">
+			<ion-item lines="none">
+				<ion-avatar slot="start">
+					<ion-img (click)="GotoProfile(com.data.profile.username)" [src]="com.data.profile?.profile"></ion-img>
+				</ion-avatar>
+				<ion-label class="testwarp">
+					<p class="follow_post_txt"><span style="font-weight: 700;">{{com.data.profile.username}}</span></p>
+					<p class="follow_post_time" [innerHTML]="com.comment"></p>
+					<p class="image_box_tim"><span class="bullet">.</span>{{com.createdAt || '0s'}}</p>
+				</ion-label>
+			</ion-item>
+	</div>
+
+
+</ion-content>
+<!-- <ion-footer class="ion-no-border">
+  <ion-toolbar class="footer_css">
+  	<div style="border: solid 1px #c1c0c9;
+    border-radius: 10px;
+    height: 55px;
+    margin-top: 18px;
+    width: 90%;
+    margin-left: 10px;">
+	   	<ion-input class="Comment_txt" [(ngModel)]="field" placeholder="Enter Comments"></ion-input>
+	   	<img class="send_btn" (click)="comment_post()" src="../assets/imgs/Cursor.svg">
+    </div>
+  </ion-toolbar>
+</ion-footer> -->
+<ion-footer class="ion-no-border">
+	<ion-toolbar class="footer_css" [class.height_change]="name">
+		<div id="list_box" style="    height: 245px;overflow: scroll;" *ngIf="name">
+			<ion-list>
+				<ion-item *ngFor="let da of items_search | slice:0:20; let i=index" (click)="send_notification(da)">
+					<ion-avatar slot="start">
+						<img *ngIf="!da[0]" [src]="da.profile || '../assets/imgs/profile.svg'">
+						<img *ngIf="da[0]" [src]="da[0]">
+					</ion-avatar>
+					<ion-label>
+						<h2 class="name_list">{{da[1]}}</h2>
+						<h3 class="name_deatil">@{{da[1]}}</h3>
+					</ion-label>
+				</ion-item>
+			</ion-list>
+		</div>
+		<div style="border: solid 1px #c1c0c9;
+    border-radius: 10px;
+    height: 55px;
+    margin-top: 18px;
+    width: 90%;
+    margin-left: 10px;">
+			<ion-input (input)="onSearchChange($event.target.value)" class="Comment_txt" [(ngModel)]="field" placeholder="Enter Comments"></ion-input>
+			<img class="send_btn" (click)="comment_post()" src="../assets/imgs/Cursor.svg">
+		</div>
+	</ion-toolbar>
+</ion-footer>

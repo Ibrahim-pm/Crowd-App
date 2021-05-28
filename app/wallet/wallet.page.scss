@@ -1,0 +1,89 @@
+.header_txt{
+	/*text-align: right;
+    margin-right: 12px;
+    margin-top: 55px;
+    margin-bottom: 15px;*/
+    font-size: 22px;
+    color: #818ddb;
+}
+.back_button{
+	color: #818ddb;
+    font-size: 37px;
+    
+}
+.profile_box{
+	height: 200px;
+    width: 100%;
+    background-image: linear-gradient(to bottom, #818ddb, #707bbf, #6069a3, #505888, #41476e);
+    border-radius: 0px 0px 20px 0px;
+    position: relative;
+}
+.profile_img{
+	    position: absolute;
+    width: 45px;
+    border-radius: 40px;
+    height: 45px;
+    right: 50px;
+    top: 50px;
+}
+.txt{
+	position: absolute;
+    top: 25px;
+    left: 42px;
+    font-size: 20px;
+    color: #fff;
+    font-weight: 300;
+}
+.amount{
+	position: absolute;
+    top: 55px;
+    left: 45px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+}
+.txt_{
+    position: absolute;
+    top: 25px;
+    right: 70px;
+    font-size: 20px;
+    color: #fff;
+    font-weight: 300;
+}
+.amount_{
+    position: absolute;
+    top: 55px;
+    right: 94px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.pruchase{
+	    position: absolute;
+    bottom: 15px;
+    left: 10px;
+}
+.withdraw{
+	position: absolute;
+    bottom: 15px;
+    right: 10px;
+}
+.box{
+	height: 260px;
+    box-shadow: 0px 0px 2px 0px;
+}
+.txt_history{
+	    font-size: 18px;
+    margin-left: 12px;
+    margin-top: 22px;
+}
+.img_send{
+	margin-left: 25px;
+}
+.col_box{
+	padding-top: 15px;
+}
+.grid_box{
+	margin-top: 10px;
+}

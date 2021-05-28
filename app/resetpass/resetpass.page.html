@@ -1,0 +1,24 @@
+<ion-content [fullscreen]="true">
+  <ion-icon (click)="goBack()" class="back_btn" name="chevron-back-outline"></ion-icon>
+  <h2 class="login_txt">Reset Password</h2>
+  <form [formGroup]="ionicForm" >
+  <img class="user_icon" src="../assets/imgs/password.svg">
+  <ion-input  [(ngModel)]="password" formControlName="password" placeholder = "New Password" type="password" class="email_txt"></ion-input>
+    <p class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
+      Password is required.
+    </p>
+    <p class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.pattern">
+      Minimum 6 characters, at least one uppercase letter, and one number:
+    </p>
+  <img class="pass_icon" src="../assets/imgs/password.svg">
+  <ion-input [(ngModel)]="cpassword" formControlName="cpassword" placeholder = "Confirm Password" type="password" class="pass_txt"></ion-input>
+    <p class="error ion-padding" *ngIf="isSubmitted && errorControl.cpassword.errors?.required">
+      Confirm Password is required.
+    </p>
+    <p class="error ion-padding" *ngIf="cpassword && cpassword !=password">
+       Password does not match.
+    </p>
+  </form>
+  <ion-button class="btn" shape="round" (click)="RestPassword()">Done</ion-button>
+  
+</ion-content>

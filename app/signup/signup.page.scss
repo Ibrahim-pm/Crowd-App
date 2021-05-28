@@ -1,0 +1,162 @@
+ion-menu-button {
+  color: var(--ion-color-primary);
+}
+
+#container {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+  color: #8c8c8c;
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+.logo{
+      width: 160px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    display: block;
+    top: 100px;
+}
+.login_txt{
+  text-align: center;
+    margin-top: 130px;
+    color: #818ddb;
+    font-size: 18px;
+    margin-bottom: 0px;
+}
+.email_txt{
+       position: relative;
+    margin-right: auto;
+    width: 60%;
+    box-shadow: 2px 2px 4px -2px #888888;
+    border-radius: 20px;
+    margin-left: 22%;
+}
+.user_icon{
+        position: absolute;
+    left: 15%;
+    margin-top: -12px;
+    z-index: 999999;
+    width: 70px;
+}
+
+.pass_icon{
+    position: absolute;
+    left: 15%;
+    margin-top: 19px;
+    width: 70px;
+    z-index: 999999;
+}
+.pass_txt{
+   position: relative;
+    margin-right: auto;
+    width: 60%;
+    margin-top: 30px;
+    box-shadow: 2px 2px 4px -2px #888888;
+    border-radius: 20px;
+    margin-left: 22%;
+}
+.for_txt{
+      font-size: 12px;
+    text-align: right;
+    margin-right: 18%;
+    color: #8994dd;
+}
+.btn{
+          position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    display: table;
+    margin-top: 25px;
+    width: 38%;
+    height: 46px;
+    font-size: 14px;
+}
+.button-native{
+  background: #818ddb !important;
+}
+.line{
+      margin-top: 40px;
+    position: relative;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+.fb_gg{
+      position: relative;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+    margin-top: 20px;
+}
+.signup_txt{
+     font-size: 12px;
+    width: 100%;
+    text-align: center;
+    margin-top: 55px;
+}
+.sign_up{
+  color: #818ddb
+}
+.sc-ion-input-md-h{
+  padding-left: 35px !important;
+  padding-right: 10px !important;
+}
+.txt{
+      margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 12px;
+    text-align: center;
+    color: #999999;
+}
+.back_btn{
+      position: absolute;
+    top: 30px;
+    margin-left: 8%;
+    font-size: 30px;
+    color: #818ddb;
+}
+.privicy{
+  position: relative;
+  margin-right: auto;
+  width: 60%;
+  margin-top: 11px;
+  border-radius: 20px;
+  margin-left: 15%;
+}
+.colortext{
+  color: #999999;
+  font-size: 12px;
+}
+.mg0px{
+  margin: 0px !important;
+}
+.mg10px{
+  margin-left: 10px;
+
+}

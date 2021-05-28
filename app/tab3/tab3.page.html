@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="page_title">Messages</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div class="search_box">
+		<ion-searchbar style="box-shadow: 2px 0px 13px -7px;
+    border-radius: 55px;
+    margin-top: 20px;
+    height: 40px;" class="search" (ionChange)="getItems($event)" search-icon="undefined"></ion-searchbar>
+		<img class="search_img" src="../assets/imgs/search_tab.png">
+	</div>
+	<!-- <p *ngIf="friend_list_length > 0" class="active_txt">Friends</p>
+	<div class="live_box">
+		<div *ngFor="let fri of friend_list" class="active_profile">
+			<div class="live_status"></div>
+			<img class="live_img" [src]="fri.profile || '../assets/imgs/profile.svg'">
+			<p class="txt">{{fri.username}}</p>
+		</div>
+	</div> -->	
+	<div class="chat_box_list">
+		<div *ngIf="friend_list_length < 1">
+			<p style="text-align: center;
+    margin-top: 55%;
+    color: #000;">Let's connect to your friends</p>	
+		</div>
+		<div class="chat_box_single">
+			<ion-grid>
+			   <div *ngFor="let fri of items">	
+				  <ion-row *ngIf="block_list_array.indexOf(fri.friend) < 0" style="position: relative;">
+					    <ion-col size="3">
+					      <!-- <div class="chat_live"></div> -->
+						  <img class="chat_profile" (click)="get_profile(fri)" [src]="fri.data.username.profile || '../assets/imgs/profile.svg'">
+					    </ion-col>
+					    <ion-col size="7">
+					      <p class="chat_name">{{fri.data.username.username}}</p>
+					      <div *ngFor="let d of last_sms_data" (click)="chat_page(fri,d.message)"> 
+					     	 <p class="chat_msg_" *ngIf="d.email == fri.friend && chat_sms_list.indexOf(d.message) < 0">{{d.message}}</p>
+					     	 <p class="chat_msg" *ngIf="d.email == fri.friend && chat_sms_list.indexOf(d.message) >= 0">{{d.message}}</p>
+					     	 <!-- <p class="chat_msg" *ngIf="d.email != fri.friend && d.message">No SMS</p> -->
+					     	 <p class="chat_status" *ngIf="d.email == fri.friend && d.message">Delivered</p>
+					 	  </div>
+					 	  <div (click)="chat_page(fri,'nosms')" *ngIf="last_sms_data_td.indexOf(fri.friend) < 0">
+					 	  	 <p class="chat_msg">No Message</p>
+					 	  	 <p class="chat_status"></p>
+					 	  </div>
+					    </ion-col>
+					    <ion-col size="2">
+						    <ion-icon (click)="presentActionSheet(fri)" class="chat_more_icon" name="ellipsis-vertical"></ion-icon>
+						    <div *ngFor="let d of last_sms_data">
+						    	<p *ngIf="d.createdAt && d.email == fri.friend" class="chat_time">{{d.createdAt.seconds * 1000 | date:"hh:mm"}}</p>
+							</div>
+						</ion-col>
+				  </ion-row>
+			   	</div>
+			</ion-grid>  	
+		</div>
+		  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData_all($event)">
+		    <ion-infinite-scroll-content
+		      loadingSpinner="bubbles"
+		      loadingText="Loading more data...">
+		    </ion-infinite-scroll-content>
+		  </ion-infinite-scroll> 
+	</div>
+</ion-content>

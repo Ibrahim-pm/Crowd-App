@@ -1,0 +1,35 @@
+<ion-content [fullscreen]="true">
+<div *ngIf="loader == 'present'" style="text-align: center;
+    margin-left: 15px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    background-color: #818ddb;
+    z-index: 9999999999999;
+    height: 50px;">
+   <ion-spinner style="position: relative;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 3%;color: #fff" name="lines"></ion-spinner>
+  </div>  	
+  <ion-icon (click)="goBack()" class="back_btn" name="chevron-back-outline"></ion-icon>
+  <h2 class="login_txt">Recover <br> Your <span class="act_txt">Account</span></h2>
+    <form [formGroup]="ionicForm">
+        <img class="user_icon" src="../assets/imgs/username.svg">
+        <ion-input [(ngModel)]="email" formControlName="email" placeholder = "Email" class="email_txt"></ion-input>
+            <p class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.required">
+                Email is required.
+            </p>
+        <p class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.pattern">
+            Please provide valid email id.
+        </p>
+
+    </form>
+  <ion-button class="btn" shape="round" (click)="ForgotPassword()">Next</ion-button>
+  
+</ion-content>

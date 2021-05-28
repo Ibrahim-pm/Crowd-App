@@ -1,0 +1,180 @@
+<ion-content> 
+  <ion-icon style="position: absolute;
+    color: #818ddb;
+    font-size: 22px;
+    left: 10px;
+    top: 14px;z-index: 999999999999;" (click)="goBack()" class="back_button" name="chevron-back-outline"></ion-icon>
+  <img  *ngIf="img_" class="profile_img" [src]="img_">
+    <img *ngIf="!img_" class="dummy" src='../assets/imgs/profile-user_profile.svg'>
+  <!--<p class="post">{{data_length}}</p>
+  <p class="follower">{{friend_length}}</p>
+  <p class="following">{{friend_length}}</p>
+  <p class="post_txt">Posts</p>
+  <p class="follower_txt">followers</p>
+  <p class="following_txt">following</p>
+    <ion-button style="    position: absolute;
+    top: 262px;
+    right: 25px;
+    font-size: 12px;" *ngIf="friend_list_array.indexOf(this.data_mein[2]) < 0 && friend_list_array_request.indexOf(this.data_mein[2]) < 0" (click)="send_request()" color="primary">Follow</ion-button>
+    <ion-button style="    position: absolute;
+    top: 262px;
+    right: 25px;
+    font-size: 12px;" *ngIf="friend_list_array_request.indexOf(this.data_mein[2]) >= 0 && friend_list_array.indexOf(this.data_mein[2]) < 0" color="primary">Request Sent</ion-button>
+    <ion-button style="    position: absolute;
+    top: 262px;
+    right: 25px;
+    font-size: 12px;" *ngIf="friend_list_array.indexOf(this.data_mein[2]) >= 0 && friend_list_array_request.indexOf(this.data_mein[2]) >=0" color="primary">Followed</ion-button> -->
+  <div class="box">
+
+      <ion-grid class="profilegrid">
+          <ion-row class="profilerow">
+              <ion-col style="margin-right: -31px;" size="4">
+                  <p>{{data_length}}</p>
+              </ion-col>
+              <ion-col  style="margin-right: -11px;" size="4">
+                  <p>{{friend_length}}</p>
+              </ion-col>
+              <ion-col  size="4">
+                  <p>{{friend_length}}</p>
+              </ion-col>
+          </ion-row>
+          <ion-row style="    margin-top: -38px;
+    color: #0000006b;
+    font-weight: 600;font-size: 13px;">
+              <ion-col style="margin-right: -31px;" size="4">
+                  <p>Posts</p>
+              </ion-col>
+              <ion-col  style="    margin-right: -11px;" size="4">
+                  <p>Followers</p>
+              </ion-col>
+              <ion-col size="4">
+                  <p>Following</p>
+              </ion-col>
+          </ion-row>
+      </ion-grid>
+
+
+      <ion-grid>
+          <ion-row>
+              <ion-col size="9">
+                  <p *ngIf="data_mein[1]" class="name">{{data_mein[1]}}</p>
+                  <p *ngIf="data_mein[3]" class="dess">{{data_mein[3]}}</p>
+              </ion-col>
+              <ion-col size="3">
+                  <ion-button style="position: absolute;
+    right: 10px;
+    font-size: 12px;" *ngIf="friend_list_array.indexOf(this.data_mein[2]) < 0 && requested_data.indexOf(user_email) < 0" (click)="send_request()" color="primary">Follow</ion-button>
+                  <ion-button style="position: absolute;
+    top: 20px;
+    right: 10px;
+    font-size: 12px;" *ngIf="requested_data.indexOf(user_email) >= 0 && friend_list_array.indexOf(this.data_mein[2]) < 0" color="primary">Requested</ion-button>
+                  <ion-button style="position: absolute;right: 10px;font-size: 12px;" *ngIf="friend_list_array.indexOf(this.data_mein[2]) >= 0" color="primary">Following</ion-button>
+              </ion-col>
+          </ion-row>
+      </ion-grid>
+    <ion-segment *ngIf="friend_list_array.indexOf(this.data_mein[2]) >= 0" (ionChange)="segmentChanged($event)" [(ngModel)]="segmentModel">
+      <ion-segment-button value="fri">
+       <ion-icon name="grid"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="ene">
+       <ion-icon name="image"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="friends">
+        <ion-icon name="play-circle"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="enemies">
+        <ion-icon name="receipt"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+    <div  style="background-color: #fff;" id="segments_box" *ngIf="segmentModel === 'fri'">
+      <div style="    text-align: center;
+          margin-top: 30%;
+          color: #787C81;" *ngIf="data_length < 1 || friend_list_array.indexOf(this.data_mein[2]) < 0">
+          <ion-icon style="margin-right: 10px;color: #787C81;" name="lock-closed-outline"></ion-icon>Private Account
+      </div>   
+        <div [class.display_css]="!da.img && !da.vid" [class.weith_css]="da.img || da.vid" *ngFor="let da of data">
+          <img [class.display_css]="da.img == '' || friend_list_array.indexOf(this.data_mein[2]) < 0 || da.from == 'Deleted post'" (click)="open_post(da,da.id)" *ngIf="da.img" [src]="da.img">
+          <div [class.display_css]="da.vid == '' || friend_list_array.indexOf(this.data_mein[2]) < 0 || da.from == 'Deleted post'" *ngIf="da.vid" style="background-color: #000;" (click)="open_post(da,da.id)">
+              <video [muted]="true" autoplay loop style="height: 113px;width: 110px;">
+            <source [src]="da.vid+'#t=0.1'" type="video/mp4">
+            </video>
+          </div>
+        <!-- <div style="position: absolute;width: 65%;" (click)="open_post(da,da.id)" *ngIf="da.img == '' && da.vid == ''">
+          <ion-grid class="post_box">
+              <ion-row>
+                <ion-col size="2">
+                  <img class="profile_image_box" ionImgViewer [src]="userimage || '../assets/imgs/profile.svg'">
+                </ion-col>
+                <ion-col size="10">
+                  <p class="username">{{da.username}}</p>    
+                  <p class="image_box_txt">{{da.msg}}</p>
+                  
+                  <p class="image_box_tim" *ngIf="((date_current - da.createdAt.toMillis())/3600000)/24 > 1 "><span class="bullet">.</span>{{((date_current - da.createdAt.toMillis())/3600000)/24 | number: "1.0-0"}}d </p>
+                  <p class="image_box_tim" *ngIf="((date_current - da.createdAt.toMillis())/60000)/60 < 60  && ((date_current - da.createdAt.toMillis())/60000)/60 > 1"><span class="bullet">.</span>{{((date_current - da.createdAt.toMillis())/60000)/60 | number: "1.0-0"}}h </p>
+                  <p class="image_box_tim" *ngIf="((date_current - da.createdAt.toMillis())/60000) < 60 "><span class="bullet">.</span>{{((date_current - da.createdAt.toMillis())/60000) | number: "1.0-0"}}m </p>
+                </ion-col>
+              </ion-row>
+            </ion-grid> 
+        </div> -->
+      </div>
+    </div>
+    <div id="vide_img_photos" *ngIf="segmentModel === 'ene'"> 
+      <div style="    text-align: center;
+          margin-top: 11px;
+          color: #000000;" *ngIf="data_length < 1 || friend_list_array.indexOf(this.data_mein[2]) < 0">
+          Private Profile
+        </div>  
+      <div class="image_box_photos">
+        <ion-grid>  
+            <ion-row> 
+              <ion-col (click)="open_post(da,da.id)" [class.display_css]="!da.img  || friend_list_array.indexOf(this.data_mein[2]) < 0 || da.from == 'Deleted post'" size="4" *ngFor="let da of data">
+              <img  class="small_img_photos_1" [src]="da.img">
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+    <div id="vide_img_posts" *ngIf="segmentModel === 'friends'">
+     <!-- <p *ngIf="data_length < 1 || friend_list_array.indexOf(this.data_mein[2]) < 0">No post found</p> -->
+     <p *ngIf="data_length < 1 || friend_list_array.indexOf(this.data_mein[2]) < 0" style="text-align: center;">Private Profile</p>
+     <div class="image_box_videos">
+       <ion-grid>
+         <ion-row> 
+           <ion-col class="pd mg" size="6" [class.display_css]="da.vid == '' || friend_list_array.indexOf(this.data_mein[2]) < 0 || da.from == 'Deleted post'" *ngFor="let da of data">
+               <div class="vidoebg2" (click)="open_post(da,da.id)">
+                   <video [muted]="true"  loop class="videodis2">
+                       <source [src]="da.vid+'#t=0.1'" type="video/mp4">
+                   </video>
+               </div>
+           </ion-col>
+         </ion-row>
+       </ion-grid>
+     </div>
+    </div>
+    <div id="vide_img_posts" *ngIf="segmentModel === 'enemies'">
+     <!-- <p *ngIf="data_length < 1 || friend_list_array.indexOf(this.data_mein[2]) < 0">No post found</p> -->
+     <p *ngIf="data_length < 1 || friend_list_array.indexOf(this.data_mein[2]) < 0" style="text-align: center;">Private Profile</p>
+      <div style="margin-top: 25px;" class="image_box_photos">
+                  <!-- [class.display_css]="da.img == '' || friend_list_array.indexOf(this.data_mein[2]) < 0 || da.from == 'Deleted post'" -->
+        <ion-grid   [class.display_css]="!da.msg  || friend_list_array.indexOf(this.data_mein[2]) < 0  || da.from == 'Deleted post'" *ngFor="let da of data" class="post_box_post">
+          <ion-row>
+            <ion-col size="2">
+            <img class="profile_image_box_post" ionImgViewer [src]="da.data.username?.profile || '../assets/imgs/profile.svg'">
+            </ion-col>
+            <ion-col size="10">
+              <p class="username">{{da.data.username?.username}}</p>
+              <p class="image_box_txt_post" [innerHTML]="da.msg" (click)="open_post(da,da.id)"></p>
+              <!-- <div style="margin-left: 6px;">
+                <p class="hash" *ngFor="let hsh of da.hash" (click)="get_post_detail(hsh)">{{hsh}}</p>
+              </div> -->
+             <!--  <p class="image_box_tim" *ngIf="((date_current - da.createdAt.toMillis())/3600000)/24 > 1 "><span class="bullet">.</span>{{((date_current - da.createdAt.toMillis())/3600000)/24 | number: "1.0-0"}}d </p>
+              <p class="image_box_tim" *ngIf="((date_current - da.createdAt.toMillis())/60000)/60 < 60  && ((date_current - da.createdAt.toMillis())/60000)/60 > 1"><span class="bullet">.</span>{{((date_current - da.createdAt.toMillis())/60000)/60 | number: "1.0-0"}}h </p>
+              <p class="image_box_tim" *ngIf="((date_current - da.createdAt.toMillis())/60000) < 60 "><span class="bullet">.</span>{{((date_current - da.createdAt.toMillis())/60000) | number: "1.0-0"}}m </p> -->
+               <p class="image_box_tim_post">{{da.createdAt || '1s'}}</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>  
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>braintree</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form id="cardForm">
+		<ion-card>
+			<ion-card-header class="panel__header">
+				<h1>Card Payment</h1>
+			</ion-card-header>
+			<ion-card-content >
+              <ion-label position="floating" for="card-number">
+                <ion-icon name="card-outline" slot="start"></ion-icon>
+                Card Number
+              </ion-label>
+              <div id="card-number" class="hosted-field"></div>
+              <ion-label class="hosted-field--label" for="cardholder-name" name="cardholderName">
+                <ion-icon name="person-outline" slot="start"></ion-icon>
+                Cardholder's Name
+              </ion-label>
+              <ion-input type="text" placeholder="e.g. JOHN DOE" class="name-custom-input" [(ngModel)]="cardholdersName" name="cardholderName"></ion-input>
+                <ion-label  position="floating" for="expiration-date">
+                  <ion-icon name="calendar-clear-outline" slot="start"></ion-icon>
+                  Expiration Date</ion-label>
+                <div id="expiration-date" class="hosted-field"></div>
+				<div class="textfield--float-label">
+                  <ion-label position="floating" for="cvv">
+                    <ion-icon name="lock-closed-outline" slot="start"></ion-icon>CVV
+                  </ion-label>
+                  <div id="cvv" class="hosted-field"></div>
+				</div>
+			</ion-card-content>
+			<footer class="panel__footer">
+              <ion-button type="button"  (click)="tokenizeUserDetails();" class="pay-button">Pay</ion-button>
+			</footer>
+		</ion-card>
+
+	</form>
+</ion-content>

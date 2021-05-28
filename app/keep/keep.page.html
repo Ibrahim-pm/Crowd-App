@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+	 	<ion-icon (click)="goBack()" class="back_button" name="chevron-back-outline"></ion-icon>
+	</ion-buttons>
+    <ion-title class="header_txt">Keeps</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+
+		<ion-button shape="round" (click)="segmentChanged('true')" class="btn_2">Media</ion-button>
+		<ion-button shape="round" (click)="segmentChanged('false')" class="btn_2">Posts</ion-button>	
+	<p *ngIf="data_length < 1" style="text-align: center;margin-top: 25px;">Add some Keeps!</p>
+		<div *ngIf="media_show == 'true'">
+		  <div *ngFor="let da of data" [class.display_css]="da.data.vid == '' && da.data.img == ''" style="width: 33%;
+  padding: 2px;display: inline-block;height: 115px;">
+		      <img style="height: 114px;width: 115px;position: relative;top: 4px;border-radius: 20px;" (click)="open_post(da,da.id)" *ngIf="da.data.img" [src]="da.data.img">
+		      <div *ngIf="da.data.vid" style="background-color: #000;" (click)="open_post(da,da.id)">
+			      <video [muted]="true" autoplay loop style="height: 110px;width: 110px;">
+					<source [src]="da.data.vid+'#t=0.1'" type="video/mp4">
+				  </video>
+			  </div>
+		  </div>
+		 </div>
+		 <div *ngIf="media_show == 'false'"> 
+		   <div [class.display_css]="da.data.vid != '' || da.data.img != ''" style="width: 99%;
+  padding: 2px;display: inline-block;height: 115px;" *ngFor="let da of data">
+			  <div style="position: absolute;width: 90%;
+    margin-left: 5%;" (click)="open_post(da,da.id)" *ngIf="da.data.img == '' && da.data.vid == ''">
+			  	<ion-grid class="post_box">
+		          <ion-row>
+		            <ion-col size="2">
+		            	<ion-img class="profile_image_box" ionImgViewer [src]="da.data.username?.profile"></ion-img>
+		            </ion-col>
+		            <ion-col size="10">
+		              <p class="username">{{da.data.username.username}}</p>
+		              <p class="image_box_txt" [innerHTML]="da.data.msg"></p>
+		              <p class="hash">{{da.data.hash}}</p>
+		             <!--  <p class="image_box_tim">{{da.data.createdAt.seconds * 1000 | date:'medium'}}</p> -->
+		              <p class="image_box_tim" *ngIf="((date_current - da.createdAt.toMillis())/3600000)/24 > 1 "><span class="bullet">.</span>{{((date_current - da.createdAt.toMillis())/3600000)/24 | number: "1.0-0"}}d </p>
+				      <p class="image_box_tim" *ngIf="((date_current - da.createdAt.toMillis())/60000)/60 < 60  && ((date_current - da.createdAt.toMillis())/60000)/60 > 1"><span class="bullet">.</span>{{((date_current - da.createdAt.toMillis())/60000)/60 | number: "1.0-0"}}h </p>
+					  <p class="image_box_tim" *ngIf="((date_current - da.createdAt.toMillis())/60000) < 60 "><span class="bullet">.</span>{{((date_current - da.createdAt.toMillis())/60000) | number: "1.0-0"}}m </p>
+		            </ion-col>
+		          </ion-row>
+		        </ion-grid> 
+			  </div>
+		  </div>
+		</div>
+</ion-content>

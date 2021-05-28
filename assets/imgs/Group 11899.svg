@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="172" height="54" viewBox="0 0 172 54">
+  <defs>
+    <filter id="Rectangle_1769" x="0" y="0" width="172" height="54" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.4"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_11899" data-name="Group 11899" transform="translate(-189 -247)">
+    <g transform="matrix(1, 0, 0, 1, 189, 247)" filter="url(#Rectangle_1769)">
+      <rect id="Rectangle_1769-2" data-name="Rectangle 1769" width="154" height="36" rx="18" transform="translate(9 6)" fill="rgba(0,0,0,0.2)"/>
+    </g>
+    <text id="Withdraw_Credits" data-name="Withdraw Credits" transform="translate(312 275)" fill="#fff" font-size="14" font-family="Roboto-Regular, Roboto"><tspan x="-106.285" y="0">Withdraw Credits</tspan></text>
+    <path id="left-arrow" d="M4.829.157a.525.525,0,0,1,.746.738L1.793,4.677H14.273a.525.525,0,0,1,.53.522.532.532,0,0,1-.53.53H1.793L5.575,9.5a.535.535,0,0,1,0,.746.523.523,0,0,1-.746,0L.151,5.572a.526.526,0,0,1,0-.738Z" transform="matrix(0.602, -0.799, 0.799, 0.602, 323.104, 273.84)" fill="#fff"/>
+  </g>
+</svg>

@@ -1,0 +1,72 @@
+<ion-content [fullscreen]="true">
+  <div *ngIf="loader == 'present'" style="text-align: center;
+    margin-left: 15px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    background-color: #818ddb;
+    z-index: 9999999999999;
+    height: 50px;">
+   <ion-spinner style="position: relative;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 3%;color: #fff" name="lines"></ion-spinner>
+   <!-- <p style="text-align: center;margin-left: 15px;">Loading...</p> -->
+  </div>
+  <ion-icon (click)="goBack()" class="back_btn" name="chevron-back-outline"></ion-icon>
+  <img class="logo" src="../assets/imgs/crowdlogo.png">
+  <p class="login_txt">Welcome!</p>
+  <p class="txt">Create your account</p>
+  <form [formGroup]="ionicForm" >
+    <img class="user_icon" src="../assets/imgs/username.svg">
+    <ion-input [(ngModel)]="username" formControlName="username" placeholder = "Username" class="email_txt"></ion-input>
+    <p class="error ion-padding" *ngIf="isSubmitted && errorControl.username.errors?.required">
+      User Name is required.
+    </p>
+    <p class="error ion-padding" *ngIf="isSubmitted && errorControl.username.errors?.pattern">
+      Please provide valid User Name.
+    </p>
+    <img class="pass_icon" src="../assets/imgs/email.svg">
+    <ion-input [(ngModel)]="email" formControlName="email" placeholder = "Email" class="pass_txt"></ion-input>
+    <p class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.required">
+      Email is required.
+    </p>
+    <p class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.pattern">
+      Please provide valid email id.
+    </p>
+    <img class="pass_icon" src="../assets/imgs/password.svg">
+    <ion-input [(ngModel)]="password" formControlName="password" placeholder = "Password" type="password" class="pass_txt"></ion-input>
+    <p class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
+      Password is required.
+    </p>
+    <p class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.pattern">
+      Minimum 6 characters, at least one uppercase letter, and one number:
+    </p>
+    <img class="pass_icon" src="../assets/imgs/password.svg">
+    <ion-input [(ngModel)]="cpassword" formControlName="cpassword" placeholder = "Confirm Password" type="password" class="pass_txt"></ion-input>
+    <p class="error ion-padding" *ngIf="isSubmitted && errorControl.cpassword.errors?.required">
+      Confirm Password is required.
+    </p>
+    <p class="error ion-padding" *ngIf="cpassword && cpassword != password">
+      Password does not match.
+    </p>
+  </form>
+  <ion-item class="privicy" lines="none" (click)="PopPu()">
+    <ion-label class="colortext mg10px" >I accept terms and conditions</ion-label>
+    <ion-checkbox class="mg0px" color="primary" slot="start" [(ngModel)]="ischeck"></ion-checkbox>
+  </ion-item>
+  <ion-button class="btn" shape="round" (click)="Signup()">Sign Up</ion-button>
+  <img class="line" src="../assets/imgs/or.png">
+  <div class="fb_gg">
+    <img src="../assets/imgs/fb.svg" (click)="FbLogin()">
+    <img src="../assets/imgs/gg.svg" (click)="GoogleLogin()">
+  </div> 
+ <!--  <div class="signup_txt">
+    <p>Don't have an account? <span class="sign_up">Sign UP Here</span></p>
+  </div> -->
+</ion-content>

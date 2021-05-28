@@ -1,0 +1,141 @@
+.native-input.sc-ion-input-md{
+    max-width: 80% !important;
+}
+.header_txt{
+	text-align: right;
+    margin-right: 12px;
+    margin-top: 55px;
+    margin-bottom: 15px;
+    font-size: 22px;
+    color: #818ddb;
+}
+.back_button{
+	color: #818ddb;
+    font-size: 37px;
+    margin-top: 38px;
+}
+.profile_image_box{
+	width: 35px;
+    margin-left: 10px;
+    border-radius: 40px !important;
+    overflow: hidden;
+    height: 35px;
+    margin-top: 30px;
+    margin-right: 25px;
+}
+.image_box_txt{
+        font-size: 14px;
+    margin-left: 0px;
+    margin-top: 10px;
+    margin-bottom: -1px;
+}
+.hash{
+    margin-top: 0;
+    //margin-left: 10px;
+    font-size: 12px;
+    color: #2676e1;
+    margin-bottom: 2px;
+    display: inline-flex;
+}
+.image_box_tim{
+    font-size: 10px;
+    /*margin-top: 0;*/
+    color: #6d6d6d;
+    text-align: right;
+    //margin-top: -15px;
+   // margin-right: -2px;
+}
+.grid_css{
+	border-bottom: solid 1px #c9c9c9;
+}
+.follow_profile_pic{
+        width: 35px;
+    margin-top: 33px;
+    margin-left: 50px;
+    border-radius: 40px !important;
+    overflow: hidden;
+    height: 35px;
+}
+.follow_post_txt{
+    font-size: 14px;
+    color: #9ca6e3;
+    font-weight: 800;
+    margin-top: 15px;
+    margin-bottom: -1px;
+}
+.follow_post_time{
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: #a8a8a8;
+}
+.btn{
+    width: 77px;
+    font-size: 10px;
+    height: 30px;
+    margin-top: 25px;
+    margin-left: -15px;
+}
+.close_icon{
+    position: absolute;
+    right: 0px;
+    top: 33px;
+    font-size: 25px;
+}
+.reply_txt{
+	       font-size: 11px;
+    color: #868686;
+    position: absolute;
+    top: 30px;
+    right: 78px;
+}
+.heart_icon{
+	position: absolute;
+    right: 25px;
+    top: 40px;
+}
+.Comment_txt{
+	    width: 80%;
+    margin-left: 2%;
+    margin-top: 7px
+}
+.footer_css{
+	height: 85px;
+}
+.send_btn{
+	position: absolute;
+    right: 45px;
+    bottom: 10px;
+}
+.usernames{
+    font-size: 16px;
+    margin-bottom: -12px;
+    margin-top: 30px;
+    color: #9ca6e3;
+}
+.height_change{
+    height: 360px !important;
+}
+.bar{
+    text-align: center;
+    width: 100%;
+    z-index: 2;
+    transform: translate(0%, 10%);
+    margin-top: -52px;
+    background-color: #00000080
+}
+.video_play{
+    width: 100%;
+    height: 300px;
+    background-color: #000;
+    /*margin-top: 15px;*/
+}
+.testwarp{
+    white-space:normal;
+}
+.bgwhite{
+    --background: white;
+}
+.fontsize23px{
+    font-size: 23px !important;
+}

@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons  slot="start">
+	 	<ion-icon (click)="goBack()" class="back_button" name="chevron-back-outline"></ion-icon>
+	</ion-buttons>
+    <ion-title class="header_txt">{{data_mein.data.username?.username}}</ion-title>
+    <p class="active_txt"></p>
+  </ion-toolbar>
+</ion-header>
+<ion-content [scrollEvents]="true" style="background-color: #fff;">
+	<!-- <p class="today_txt">Today</p> -->
+  <ion-refresher style="background-color: #fff;" slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content style="background-color: #fff;"
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+  </ion-refresher-content>
+  </ion-refresher>
+  <div class="messages">
+    <p *ngIf="chat_length < 1" style="text-align: center;">Send your first message.</p>
+    <ion-item lines="none" color="{{ 'me' === da.sender ? 'primary' : 'light'}}" class="message" [ngClass]="{'me': 'me' === da.sender}" *ngFor="let da of data">
+      <!-- <ion-avatar slot="start">
+        <img *ngIf="'me' !== da.sender" [src]="da.profile || '../assets/imgs/profile.svg'" title="{{da.username}}" >
+        <img *ngIf="'me' === da.sender" [src]="da.profile || '../assets/imgs/profile.svg'" >
+      </ion-avatar> -->
+      <p style="text-align: left;width: 90%;">{{da.message}}</p>
+      <p style="font-size: 11px;
+    position: absolute;
+    right: 15px;
+    bottom: -4px;" >{{da.createdAt?.seconds * 1000 | date:"hh:mm"}}</p>
+    </ion-item>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+   <ion-toolbar class="footer_css">
+    <div style="border: solid 1px #c1c0c9;
+    border-radius: 10px;
+    height: 55px;
+    margin-top: 18px;
+    width: 90%;
+    margin-left: 10px;">
+      <ion-input class="Comment_txt" [(ngModel)]="field" placeholder="Enter Message"></ion-input>
+      <img *ngIf="field" (click)="send_mgs()" class="send_btn" src="../assets/imgs/Cursor.svg">
+    </div>
+  </ion-toolbar>
+</ion-footer>

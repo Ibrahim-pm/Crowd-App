@@ -1,0 +1,48 @@
+<ion-content [fullscreen]="true">
+  <div *ngIf="loader == 'present'" style="text-align: center;
+    margin-left: 15px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    background-color: #818ddb;
+    z-index: 9999999999999;
+    height: 50px;">
+   <ion-spinner style="position: relative;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 3%;color: #fff" name="lines"></ion-spinner>
+   <!-- <p style="text-align: center;margin-left: 15px;">Loading...</p> -->
+  </div>
+  <img class="logo" src="../assets/imgs/crowd logo-26.svg">
+  <p class="login_txt">Login
+  <form [formGroup]="ionicForm">
+    <img class="user_icon" src="../assets/imgs/username.svg">
+    <ion-input [(ngModel)]="username" formControlName="username" placeholder = "Username" class="email_txt"></ion-input>
+  <p class="error ion-padding" *ngIf="isSubmitted && errorControl.username.errors?.required">
+    User Name or Email is required.
+  </p>
+    <img class="pass_icon" src="../assets/imgs/password.svg">
+    <ion-input [(ngModel)]="password" formControlName="password" placeholder = "Password" type="password" class="pass_txt"></ion-input>
+  <p class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
+    Password is required.
+  </p>
+  <p class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.pattern">
+    Minimum 6 characters, at least one uppercase letter, and one number:
+  </p>
+  </form>
+  <p class="for_txt" routerLink="/forgot" routerDirection="forward">Forgot Password?</p>
+  <ion-button class="btn" routerDirection="forward"  shape="round" (click)="SingIn()">Sign In</ion-button>
+  <img class="line" src="../assets/imgs/Group 11787.svg">
+  <div class="fb_gg">
+    <img src="../assets/imgs/fb.svg" (click)="FbLogin()">
+    <img src="../assets/imgs/gg.svg" (click)="GoogleLogin()">
+  </div> 
+  <div class="signup_txt">
+    <p>Don't have an account? <span routerLink="/signup" routerDirection="forward" class="sign_up">Sign Up Here</span></p>
+  </div>
+</ion-content>

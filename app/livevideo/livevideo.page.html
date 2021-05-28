@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="new-background-color">
+    <ion-icon style="color: #fff;
+    font-size: 38px;
+    position: absolute;
+    top: 2px;
+    right: 5px;" (click)="goBack()" name="close-outline"></ion-icon>
+    <ion-icon *ngIf="live_video_live == 'false'" style="    color: #fff;
+    font-size: 28px;
+    position: absolute;
+    top: 10px;
+    left: 10px;" (click)="switchCamera()" name="swap-horizontal-outline"></ion-icon>
+    <ion-icon *ngIf="live_video_live == 'true'" style="    color: #fff;
+    font-size: 28px;
+    position: absolute;
+    top: 10px;
+    left: 10px;" (click)="changeCamera()" name="swap-horizontal-outline"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="custom-ion-content">
+  <div [class.hide]="publisher_value == 'true'" style="width: 100%;height: 85%;" id="subscriber"></div>
+  <div [class.hide]="session_value == 'true'" style="width: 100%;height: 85%;" id="publisher"></div>
+</ion-content>
+<ion-footer style="background-color: #000" class="ion-no-border">
+  <ion-toolbar class="footer_css">
+    <div *ngIf="Live_stop == 'true'" class="timer">{{elapsed.h}}:{{elapsed.m}}:{{elapsed.s}}</div>
+    <div style="background-color: #000;    height: 150px;">
+        <div style="color: #fff;
+          text-align: center;">
+            <p [class.click_highlight]="button_css == 'live'" *ngIf="Live_stop != 'true'" style="margin: 0;
+          display: inline-block;
+          " (click)="start_live_()">Live</p>
+            <p *ngIf="Live_stop == 'true'" style="text-align: center;margin-top: 0;">You are now live</p>
+        </div>
+        <img *ngIf="button_css == 'live' && Live_stop == 'false'" (click)="get_live_()" style="    position: absolute;
+        bottom: 30px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;" src="../assets/imgs/Icon Take photo.svg">
+        <img *ngIf="Live_stop == 'true'" (click)="stop_live_function()" style="    position: absolute;
+        bottom: 30px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;" src="../assets/imgs/close_cam.svg">
+        <!-- <img *ngIf="Live_stop == 'true'" class="imge_box_logo" (click)="Tipopen()" src="../assets/imgs/feed/tip.svg"> -->
+    </div>
+  </ion-toolbar>
+</ion-footer>

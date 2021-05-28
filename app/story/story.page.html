@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{storys?.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <video class="video_play" poster="../assets/imgs/video_place.png" autoplay="true" controls controlsList="nodownload" preload="metadata">
+    <source  [src]="storys?.StoryURL" type="video/mp4">
+  </video>
+</ion-content>

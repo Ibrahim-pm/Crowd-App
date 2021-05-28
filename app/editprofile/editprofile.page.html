@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons  slot="start">
+	 	<ion-icon (click)="goBack()" class="back_button" name="chevron-back-outline"></ion-icon>
+	</ion-buttons>
+    <ion-title class="header_txt">Edit Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div *ngIf="!loding" style="text-align: center !important;">
+		<ion-spinner name="bubbles"></ion-spinner>
+	</div>
+	<div *ngIf="loding">
+
+		<img *ngIf="base64Image" class="img" [src]="base64Image">
+		<img *ngIf="!base64Image" class="img" src="../assets/imgs/profile-user_profile.svg">
+		<img class="add_profile" style="height: 35px;" src="../assets/imgs/Group 12016.svg" (click)="presentActionSheet()">
+
+
+		<!--<p class="labelname">User Name</p>
+		<ion-input class="" placeholder="Username" [(ngModel)]="username"></ion-input>
+		<p class="labelname2">Full Name</p>
+		<ion-input class="input_2" placeholder="Full Name" [(ngModel)]="fusername"></ion-input>
+		<p class="labelname2">Date Of Birth</p>
+		<ion-input class="input_2"  placeholder="MM/DD/YYYY" [(ngModel)]="dateofbirth"></ion-input>
+		<p class="labelname2">Phone Number</p>
+		<ion-input class="input_2" placeholder="xxxxxxx" [(ngModel)]="number"></ion-input>
+		<ion-button class="btn" (click)="UpdateProfile()" routerDirection="forward" shape="round">Save Changes</ion-button> -->
+	</div>
+
+
+	<ion-item class="updateprofile mgtop10per" lines="none">
+		<ion-label position="floating">User Name</ion-label>
+		<ion-input class="input_1" [(ngModel)]="username"></ion-input>
+	</ion-item>
+	<ion-item class="updateprofile" lines="none">
+		<ion-label position="floating">Full Name</ion-label>
+		<ion-input class="input_1" [(ngModel)]="fusername"></ion-input>
+	</ion-item>
+	<ion-item class="updateprofile" lines="none">
+		<ion-label position="floating">Date Of Birth</ion-label>
+		<ion-datetime class="input_1" displayFormat="MM/DD/YYYY"  placeholder="Select Date" [(ngModel)]="dateofbirth"></ion-datetime>
+	</ion-item>
+	<p class="mg">Phone Number</p>
+	<ion-row>
+		<ion-col size="3" (click)="AddCode()">
+			<p class="code">+{{code}}</p>
+		</ion-col>
+		<ion-col size="9">
+			<ion-item class="updateprofile" style="margin-left: 0px!important;" lines="none">
+				<ion-input type="tel" maxlength="10" class="input_1" [(ngModel)]="number"></ion-input>
+			</ion-item>
+		</ion-col>
+	</ion-row>
+	<ion-button class="btn" (click)="UpdateProfile()" routerDirection="forward" shape="round">Save Changes</ion-button>
+</ion-content>

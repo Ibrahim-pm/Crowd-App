@@ -1,0 +1,78 @@
+ion-content{
+    --background: #0000005c;
+}
+.close_icon{
+	    position: absolute;
+    font-size: 29px;
+    color: #fff;
+    right: 17px;
+    top: 25px;
+}
+.box{
+	height: 50%;
+    width: 100%;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    border-radius: 55px 55px 0px 0px;
+}
+.line{
+	position: relative;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 2px;
+}
+.share_txt{
+	font-size: 20px;
+    text-align: center;
+    font-weight: 700;
+    margin-top: 15px;
+    color: #818ddb;
+}
+.share_icon{
+	position: absolute;
+    right: 40px;
+    top: 27px;
+}
+.sc-ion-searchbar-md-h{
+	--box-shadow:none !important;
+}
+.search_img{
+	position: absolute;
+    right: 82px;
+    top: 82px;
+    width: 20px;
+}
+
+.live_box{
+        display: inline-flex;
+    overflow: scroll;
+    white-space: nowrap;
+    width: 100%;
+    margin-top: 15px;
+}
+.active_profile{
+    position: relative;
+}
+.live_img{
+	    width: 55px;
+    margin-left: 25px;
+    border-radius: 40px;
+    height: 55px;
+}
+.txt{
+        font-size: 12px;
+    margin-left: 26px;
+    color: #919498;
+}
+.img_share_icon{
+	width: 82%;
+    margin-left: 10px;
+}
+.image_txt_name{
+	text-align: center;
+	color: #919498;
+}

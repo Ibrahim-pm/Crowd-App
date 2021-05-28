@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons  slot="start">
+	 	<ion-icon (click)="goBack()" class="back_button" name="chevron-back-outline"></ion-icon>
+	</ion-buttons>
+    <ion-title class="header_txt">Live</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+	 <!-- <ion-button (click)="call_any('user@gmail.com')">Default</ion-button>
+	 <ion-button (click)="test_noti()">Default</ion-button> -->
+	 <p style="    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 35px;" *ngIf="data_length < 1">No one is live</p>
+	 
+	  <ion-fab style="position: absolute;
+	    right: 40px;
+	    bottom: 75px" class="add_button" slot="fixed" (click)="livevideopage()">
+	    <img style="solid 1px #c1c0c9;    border-radius: 40px;" src="../assets/imgs/diaphragm.svg">
+	    <p style="margin-top: 3px;
+	    margin-left: -7px;
+	    color: #818ddb;">Go Live</p>
+	  </ion-fab>
+
+	  <div *ngFor="let fri of data">	
+		  <ion-row (click)="get_profile_sub(fri)" style="position: relative;">
+			    <ion-col size="3">
+			      <!-- <div class="chat_live"></div> -->
+				  <img class="chat_profile" [src]="fri.profile || '../assets/imgs/profile.svg'">
+			    </ion-col>
+			    <ion-col size="7">
+			      <p class="chat_name">{{fri.username}}</p>
+			 	  <div>
+			 	  	 <p class="chat_msg">{{fri.username}} is live</p>
+			 	  	 <p class="chat_status"></p>
+			 	  </div>
+			    </ion-col>
+			    <ion-col size="2">
+				    <!-- <ion-icon (click)="presentActionSheet(fri)" class="chat_more_icon" name="ellipsis-vertical"></ion-icon>
+				    <div *ngFor="let d of last_sms_data">
+				    	<p *ngIf="d.createdAt && d.email == fri.friend" class="chat_time">{{d.createdAt.seconds * 1000 | date:"hh:mm"}}</p>
+					</div> -->
+				</ion-col>
+		  </ion-row>
+   	</div>
+</ion-content>

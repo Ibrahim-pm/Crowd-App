@@ -1,0 +1,82 @@
+.header_txt{
+	text-align: right;
+    margin-right: 12px;
+    margin-top: 55px;
+    margin-bottom: 15px;
+    font-size: 22px;
+    color: #818ddb;
+}
+.back_button{
+	color: #818ddb;
+    font-size: 37px;
+    margin-top: 38px;
+}
+.img{
+	width: 130px;
+    border-radius: 70px;
+    height: 130px;
+    margin-top: 60px;
+    position: relative;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;		
+}
+.btn{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    display: table;
+    margin-top: 80px;
+    width: 38%;
+    height: 46px;
+    font-size: 14px;
+}
+.input_1{
+    border-bottom: solid 1px #e3e3e3;
+}
+.input_2{
+    width: 80%;
+    border-bottom: solid 1px #e3e3e3;
+    margin-left: 10%;
+    //margin-top: %;
+}
+.add_profile{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 80px;
+    margin-top: -30px;
+}
+.labelname{
+    margin: 10% 0px 0px 10% !important;
+}
+.labelname2{
+    margin: 6% 0px 0px 10% !important;
+}
+.mgtop10per{
+    margin-top: 10%;
+}
+.updateprofile{
+    width: 90%;
+    margin-left: 4%;
+
+}
+.mg{
+    margin: 11px 0px 0px 30px !important;
+}
+ion-item.item-has-focus > ion-label{
+    color: black !important;
+}
+.code{
+    margin-top: 15px;
+    text-align: center;
+    border-bottom: 1px solid #e3e3e3;
+    line-height: 1.7;
+    margin-left: 23px;
+}

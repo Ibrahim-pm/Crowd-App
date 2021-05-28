@@ -1,0 +1,124 @@
+.page_title{
+	color: #818ddb;
+    text-align: right;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-size: 22px;		
+}
+.sc-ion-searchbar-md-h{
+	--box-shadow: none !important;
+    /*border: solid 1px #c1c0c9;*/
+    border-radius: 40px;
+    width: 80%;
+    margin-left: 10%;
+}
+.search_img{
+	    position: absolute;
+    top: 8px;
+    right: 55px;
+}
+.search_box{
+	position: relative;
+}
+.searchbar-input.sc-ion-searchbar-md{
+	display: none !important;
+}
+.active_txt{
+	margin-left: 29px;
+    font-size: 16px;
+    font-weight: 700;
+}
+.live_img{
+	    width: 55px;
+    margin-left: 25px;
+    border-radius: 40px;
+    height: 55px;
+}
+.live_status{
+	height: 14px;
+    width: 14px;
+    background-color: #00b5aa;
+    border-radius: 40px;
+    position: absolute;
+    left: 65px;
+    border: solid 1px #fff;
+}
+.txt{
+    font-size: 12px;
+    text-align: center;
+    margin-left: 28px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 50px;
+}
+.active_profile{
+    position: relative;
+}
+.live_box{
+        display: inline-flex;
+    overflow: scroll;
+    white-space: nowrap;
+    width: 100%;
+}
+.chat_live{
+       height: 13px;
+    width: 13px;
+    position: absolute;
+    background: #00b5aa;
+    border-radius: 40px;
+    bottom: 10px;
+    left: 20px;
+    border: solid 1px #fff;
+}
+.chat_profile{
+      width: 55px;
+    border-radius: 40px;
+    height: 55px;
+    margin-top: 20px;
+    margin-left: 15px;
+}
+.chat_box_single{
+   position: relative;
+}
+.chat_name{
+    /*margin-top: 0;*/
+    margin-bottom: 0;
+    font-weight: 600;
+        margin-top: 25px;
+}
+.chat_msg{
+    margin-top: 0;
+    margin-bottom: 3px;
+    font-size: 13px;
+    /*font-weight: 600;*/
+}
+.chat_msg_{
+    margin-top: 0;
+    margin-bottom: 3px;
+    font-size: 13px;
+    font-weight: bold;
+}
+.chat_status{
+        margin-top: 0;
+    margin-bottom: 0;
+    font-size: 11px;
+    color: #97a2b5;
+}
+.chat_more_icon{
+    position: absolute;
+    right: 0;
+    font-size: 18px;
+    color: #818ddb;
+    top: 40px;
+}
+.chat_time{
+    position: absolute;
+    font-size: 10px;
+    right: 10px;
+    top: 55px;
+    color: #75839d;
+}
+.chat_box_list{
+    overflow: scroll;
+    max-height: 90%;
+}

@@ -1,0 +1,66 @@
+.header_txt{
+	margin-top: 40px;
+    font-size: 22px;
+    text-align: center;
+    color: #818ddb;
+    margin-left: -15px;
+}
+.back_button{
+	color: #818ddb;
+    font-size: 37px;
+    margin-top: 38px;
+}
+.active_txt{
+	    text-align: center;
+    font-size: 11px;
+    color: #999999;
+    font-weight: 600;
+    margin-left: -15px;
+    margin-bottom: 20px;
+        margin-top: 2px;
+}
+.footer_css{
+	height: 85px;
+}
+.send_btn{
+	position: absolute;
+    right: 45px;
+    top: 26px;
+}
+.Comment_txt{
+	   width: 80%;
+    margin-left: 2%;
+    margin-top: 7px
+}
+.today_txt{
+	font-size: 12px;
+    text-align: center;
+    color: #d4d8e0;
+    border: solid 1px #d4d8e0;
+    padding: 4px;
+    width: 65px;
+    border-radius: 22px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+.messages {
+    width: 100%;
+    position: absolute;
+} 
+.message {
+    width: 65%;
+    padding: 5px 10px;   
+    border-radius: 5px;
+    margin: 5px;
+    float: left
+}
+.message.me {
+    float: right;
+    text-align: right
+}
+ion-item {
+    --border-radius: 20px;
+}

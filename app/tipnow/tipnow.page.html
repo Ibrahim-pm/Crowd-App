@@ -1,0 +1,52 @@
+<ion-content>
+	<ion-icon *ngIf="full_length == 'false'" (click)="dismiss()" class="close_icon" name="close-outline"></ion-icon>
+	<ion-icon *ngIf="full_length == 'true'" style="color: #000; z-index: 99999;" (click)="dismiss()" class="close_icon" name="close-outline"></ion-icon>
+	<div [class.box_heigh_1]="data_lenght < 1" [class.box_heigh_2]="data_lenght > 0" *ngIf="full_length == 'false'" class="box">
+		<img class="line" src="../assets/imgs/line.png">
+		<p class="txt" *ngIf="total_amount < 2"><span class="rate">{{total_amount}} credit</span>tipped for this post</p>
+		<p class="txt" *ngIf="total_amount > 1"><span class="rate">{{total_amount}} credits</span>tipped for this post</p>
+		<img class="tip_btn" *ngIf="data.from != userinfo_email" (click)="presentAlertPrompt()" src="../assets/imgs/Group 12003.svg">
+		<div>
+			<p (click)="see_all()" *ngIf="data_lenght > 5" style="margin-left: 15px;
+    		font-size: 14px;
+    		color: #a5a5ad;
+    		margin-bottom: 0;">See All</p>
+			<ion-list lines="none">
+		        <ion-list-header>
+		          <p *ngIf="data_lenght > 0" class="tip_txt">{{data_lenght}} tip sent</p>
+		        </ion-list-header>
+		        <div *ngFor="let da of data_tip; let i = index"> 
+			        <ion-item *ngIf="i < 6">
+			          <ion-avatar class="image_tip" slot="start">
+			            <img [src]="da.profile || '../assets/imgs/profile.svg'">
+			          </ion-avatar>
+			          <ion-label>
+			            <h2>{{da.username}}</h2>
+						  <h3 *ngIf="da.credit < 2"><span class="dollar">{{da.credit}} credit</span></h3>
+						  <h3 *ngIf="da.credit > 1"><span class="dollar">{{da.credit}} credits</span></h3>
+			         </ion-label>
+			    	</ion-item>
+		    	</div>
+		    </ion-list>	
+		</div>
+	</div>
+	<div *ngIf="full_length == 'true'" class="box_second">
+		<ion-list lines="none" style="margin-top: 40px;">
+		        <ion-list-header>
+		          <p *ngIf="data_lenght > 0" class="tip_txt">{{data_lenght}} tip sent</p>
+		        </ion-list-header>
+		        <div *ngFor="let da of data_tip; let i = index"> 
+			        <ion-item>
+			          <ion-avatar class="image_tip" slot="start">
+			            <img [src]="da.profile || '../assets/imgs/profile.svg'">
+			          </ion-avatar>
+			          <ion-label>
+			            <h2>{{da.username}}</h2>
+			            <h3 *ngIf="da.credit < 2"><span class="dollar">{{da.credit}} credit</span></h3>
+			            <h3 *ngIf="da.credit > 1"><span class="dollar">{{da.credit}} credits</span></h3>
+			         </ion-label>
+			    	</ion-item>
+		    	</div>
+		    </ion-list>	
+	</div>
+</ion-content>
